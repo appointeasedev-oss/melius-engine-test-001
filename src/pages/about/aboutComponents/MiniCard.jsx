@@ -1,4 +1,3 @@
-```javascript
 import React from 'react'
 
 const MiniCard = ({head, no, para}) => {
@@ -14,4 +13,3 @@ const MiniCard = ({head, no, para}) => {
 }
 
 export default MiniCard
-```

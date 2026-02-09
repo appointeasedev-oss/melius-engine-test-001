@@ -1,4 +1,3 @@
-```javascript
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 import logo from "./assets/logo.png";
@@ -6,7 +5,7 @@ import ServiceHead from "./components/service/ServiceHead";
 import ServiceItem from "./components/service/ServiceItem";
 import menu from "./assets/menu.png";
 import { NavLink } from "react-router-dom";
-import { useBlogData } from './context/Context';
+import { useBlogData } from './context/Context'; 
 
 const Header = () => {
   // Service categories data
@@ -66,121 +65,139 @@ const Header = () => {
     { name: "Product Engineering", icon: "ri-tools-line" }
   ];
 
+  let service = useRef();
+  let items = useRef();
+  let outerDiv = useRef();
+  let [toggle, setToggle] = useState(false);
+  
+  let serviceClick = () => {
+    let dupToggle = !toggle;
+    setToggle(dupToggle);
+    
+    // Close process menu when service opens
+    if (dupToggle && toggle2) {
+      setToggle2(false);
+      process.current.style.borderBottom = "2px solid transparent";
+      proItems.current.style.height = "0px";
+      proItems.current.style.paddingBottom = "0px";
+    }
+
+    if (dupToggle) {
+      service.current.style.borderBottom = "2px solid #FFB600";
+      items.current.style.height = "fit-content";
+      outerDiv.current.style.height = "70vh";
+    } else {
+      service.current.style.borderBottom = "2px solid transparent";
+      items.current.style.height = "0px";
+      outerDiv.current.style.height = "0px";
+    }
+  };
+
+  let [toggle2, setToggle2] = useState(false);
+  let process = useRef();
+  let proItems = useRef();
+  
+  let processClick = () => {
+    let dupli2Toggle = !toggle2;
+    setToggle2(dupli2Toggle);
+    
+    // Close service menu when process opens
+    if (dupli2Toggle && toggle) {
+      setToggle(false);
+      service.current.style.borderBottom = "2px solid transparent";
+      items.current.style.height = "0px";
+      outerDiv.current.style.height = "0px";
+    }
+
+    if (dupli2Toggle) {
+      process.current.style.borderBottom = "2px solid #FFB600";
+      proItems.current.style.height = "fit-content";
+      proItems.current.style.paddingBottom = "5px";
+    } else {
+      process.current.style.borderBottom = "2px solid transparent";
+      proItems.current.style.height = "0px";
+      proItems.current.style.paddingBottom = "0px";
+    }
+  };
+
+  let slideMenu = useRef();
+  let [menuToggle, setMenuToggle] = useState(false);
+  
+  let menuClick = () => {
+    let dupli3Toggle = !menuToggle;
+    setMenuToggle(dupli3Toggle);
+    if (dupli3Toggle) {
+      slideMenu.current.style.height = "fit-content";
+    } else {
+      slideMenu.current.style.height = "0px";
+    }
+  };
+
   const [isServiceOpen, setIsServiceOpen] = useState(false);
   const [isProcessOpen, setIsProcessOpen] = useState(false);
-  const [menuToggle, setMenuToggle] = useState(false);
-  const [blogToggle, setBlogToggle] = useState(false);
-  const [deskBlogToggle, setDeskBlogToggle] = useState(false);
-  const [mobBlogToggle, setMobBlogToggle] = useState(false);
-
-  const serviceRef = useRef();
-  const itemsRef = useRef();
-  const outerDivRef = useRef();
-  const processRef = useRef();
-  const proItemsRef = useRef();
-  const slideMenuRef = useRef();
-  const blogListRef = useRef();
-  const deskBlogRef = useRef();
-  const mobBlogListRef = useRef();
-
+  
+  // Close process when service opens and vice versa
   const handleServiceToggle = () => {
-    setIsServiceOpen(prev => {
-      if (prev) {
-        // Close service menu
-        serviceRef.current.style.borderBottom = "2px solid transparent";
-        itemsRef.current.style.height = "0px";
-        outerDivRef.current.style.height = "0px";
-      } else {
-        // Open service menu
-        serviceRef.current.style.borderBottom = "2px solid #FFB600";
-        itemsRef.current.style.height = "fit-content";
-        outerDivRef.current.style.height = "70vh";
-        // Close process menu if open
-        if (isProcessOpen) {
-          setIsProcessOpen(false);
-          processRef.current.style.borderBottom = "2px solid transparent";
-          proItemsRef.current.style.height = "0px";
-          proItemsRef.current.style.paddingBottom = "0px";
-        }
-      }
-      return !prev;
-    });
+    setIsServiceOpen(prev => !prev);
+    if (!isServiceOpen) {
+      setIsProcessOpen(false);
+    }
   };
-
+  
   const handleProcessToggle = () => {
-    setIsProcessOpen(prev => {
-      if (prev) {
-        // Close process menu
-        processRef.current.style.borderBottom = "2px solid transparent";
-        proItemsRef.current.style.height = "0px";
-        proItemsRef.current.style.paddingBottom = "0px";
-      } else {
-        // Open process menu
-        processRef.current.style.borderBottom = "2px solid #FFB600";
-        proItemsRef.current.style.height = "fit-content";
-        proItemsRef.current.style.paddingBottom = "5px";
-        // Close service menu if open
-        if (isServiceOpen) {
-          setIsServiceOpen(false);
-          serviceRef.current.style.borderBottom = "2px solid transparent";
-          itemsRef.current.style.height = "0px";
-          outerDivRef.current.style.height = "0px";
-        }
-      }
-      return !prev;
-    });
+    setIsProcessOpen(prev => !prev);
+    if (!isProcessOpen) {
+      setIsServiceOpen(false);
+    }
   };
 
-  const handleMenuToggle = () => {
-    setMenuToggle(prev => {
-      if (prev) {
-        slideMenuRef.current.style.height = "0px";
-      } else {
-        slideMenuRef.current.style.height = "fit-content";
-      }
-      return !prev;
-    });
-  };
+  const blogList = useRef();
+  const [blogToggle, setblogToggle] = useState(false);
+  
+  let blogClick = ()=>{
+    let blog = !blogToggle;
+    setblogToggle(blog)
+    if (blog) {
+      blogList.current.style.height = "fit-content";
+    } else {
+      blogList.current.style.height = "0px";
+    }
+  }
 
-  const handleBlogToggle = () => {
-    setBlogToggle(prev => {
-      if (prev) {
-        blogListRef.current.style.height = "0px";
-      } else {
-        blogListRef.current.style.height = "fit-content";
-      }
-      return !prev;
-    });
-  };
+  let deskBlog = useRef();
+  let [DeskBlogToggle, setDeskBlogToggle] = useState(false);
+  
+  let deskBlogHandler = ()=>{
+    let deskToggle = !DeskBlogToggle;
+    setDeskBlogToggle(deskToggle);
+    if(deskToggle){
+      deskBlog.current.style.display = "inline";
+      deskBlog.current.style.height = "fit-content";
+      deskBlog.current.style.border = '1px solid #a1a1aa';
+    }
+    else{
+      deskBlog.current.style.display = "none";
+      deskBlog.current.style.height = "0px";
+      deskBlog.current.style.border = 'transparent';
+    }
+  }
 
-  const handleDeskBlogToggle = () => {
-    setDeskBlogToggle(prev => {
-      if (prev) {
-        deskBlogRef.current.style.display = "none";
-        deskBlogRef.current.style.height = "0px";
-        deskBlogRef.current.style.border = 'transparent';
-      } else {
-        deskBlogRef.current.style.display = "inline";
-        deskBlogRef.current.style.height = "fit-content";
-        deskBlogRef.current.style.border = '1px solid #a1a1aa';
-      }
-      return !prev;
-    });
-  };
-
-  const handleMobBlogToggle = () => {
-    setMobBlogToggle(prev => {
-      if (prev) {
-        mobBlogListRef.current.style.height = "0px";
-      } else {
-        mobBlogListRef.current.style.height = "fit-content";
-      }
-      return !prev;
-    });
-  };
+  let mobBlogList = useRef();
+  let [MobBlogToggle, setMobkBlogToggle] = useState(false);
+  
+  let mobBlogHandler = ()=>{
+    let switchToggle = !MobBlogToggle;
+    setMobkBlogToggle(switchToggle);
+    if(switchToggle){
+      mobBlogList.current.style.height = "fit-content";
+    }
+    else{
+      mobBlogList.current.style.height = "0px";
+    }
+  }
 
   const blogs = useBlogData();
-
+  
   return (
     <div className="sticky z-[999] top-0 bg-white w-[100vw] px-4 max-w-[1700px] mx-auto">
       <div className="sticky z-[999] top-0 bg-white">
@@ -196,9 +213,9 @@ const Header = () => {
             className={`menu text-[4.5vw] cursor-pointer sm:text-[1.8rem] lg:hidden transition-all duration-300 ${
               menuToggle ? 'ri-close-line' : 'ri-menu-line'
             }`}
-            onClick={handleMenuToggle}
+            onClick={menuClick}
           ></i>
-
+          
           <div className="hidden md:hidden lg:flex w-[70%] md:justify-between">
             <ul className="flex items-center gap-6 lg:gap-8">
               <li
@@ -227,7 +244,7 @@ const Header = () => {
                   </div>
                 )}
               </li>
-
+              
               <li
                 onClick={handleProcessToggle}
                 className="relative cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300"
@@ -246,23 +263,23 @@ const Header = () => {
                   </div>
                 )}
               </li>
-
+              
               <li className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300">
                 <i className="ri-information-line mr-2"></i>
                 <NavLink to="/about">About Us</NavLink>
               </li>
-
+              
               <li className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300">
                 <i className="ri-question-line mr-2"></i>Enquire Now
               </li>
-
-              <li
-                onClick={handleDeskBlogToggle}
+              
+              <li 
+                onClick={deskBlogHandler} 
                 className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300 relative"
               >
                 <i className="ri-article-line mr-2"></i>Blogs
-                <i className={`ri-arrow-down-s-fill ml-1 transition-transform duration-300 ${deskBlogToggle ? 'rotate-180' : ''}`}></i>
-                <div ref={deskBlogRef} className="overflow-hidden h-[0px] border-1 border-transparent rounded-md px-2 py-2 pr-5 absolute top-[180%] left-0 bg-white shadow-lg min-w-[200px] hidden">
+                <i className={`ri-arrow-down-s-fill ml-1 transition-transform duration-300 ${DeskBlogToggle ? 'rotate-180' : ''}`}></i>
+                <div ref={deskBlog} className="overflow-hidden h-[0px] border-1 border-transparent rounded-md px-2 py-2 pr-5 absolute top-[180%] left-0 bg-white shadow-lg min-w-[200px] hidden">
                   <ul >
                     {blogs.map((b, index) => {
                       return (
@@ -277,27 +294,27 @@ const Header = () => {
                 </div>
               </li>
             </ul>
-
+            
             <button className="px-4 rounded-lg py-2 text-[1rem] border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 w-fit cursor-pointer">
               <i className="ri-quote-text mr-2"></i>Get Free Quote
             </button>
           </div>
         </div>
-
+        
         {/* Mobile Menu */}
-        <div className="mt-3 bg-white h-0 overflow-hidden transition-all duration-300" ref={slideMenuRef}>
+        <div className="mt-3 bg-white h-0 overflow-hidden transition-all duration-300" ref={slideMenu}>
           <ul className="mobileMenu px-4 flex flex-col gap-4 sm:gap-2 pb-4">
             <li
               className="text-[1rem] border-b-[2px] sm:text-[1.2rem] border-transparent hover:border-[#FCB714] p-2 rounded-md transition-all duration-200"
-              onClick={handleServiceToggle}
-              ref={serviceRef}
+              onClick={serviceClick}
+              ref={service}
             >
               <span className="cursor-pointer">
                 <i className="ri-tools-fill mr-2"></i>Services
               </span>
-              <i className={`ri-arrow-down-s-fill cursor-pointer ml-2 transition-transform duration-300 ${isServiceOpen ? 'rotate-180' : ''}`}></i>
-              <div className="overflow-y-scroll service-menu h-0" ref={outerDivRef}>
-                <div className="border border-zinc-400 w-full h-0 overflow-hidden rounded-md mt-2" ref={itemsRef}>
+              <i className={`ri-arrow-down-s-fill cursor-pointer ml-2 transition-transform duration-300 ${toggle ? 'rotate-180' : ''}`}></i>
+              <div className="overflow-y-scroll service-menu h-0" ref={outerDiv}>
+                <div className="border border-zinc-400 w-full h-0 overflow-hidden rounded-md mt-2" ref={items}>
                   {serviceCategories.map((category, index) => (
                     <div key={index} className="p-4 sm:px-14">
                       <ServiceHead head={category.title} />
@@ -310,17 +327,17 @@ const Header = () => {
                 </div>
               </div>
             </li>
-
+            
             <li
               className="text-[1rem] border-b-[2px] sm:text-[1.2rem] border-transparent hover:border-[#FCB714]  p-2 rounded-md transition-all duration-200"
-              ref={processRef}
-              onClick={handleProcessToggle}
+              ref={process}
+              onClick={processClick}
             >
               <span className="cursor-pointer">
                 <i className="ri-settings-3-line mr-2"></i>Process
               </span>
-              <i className={`cursor-pointer ri-arrow-down-s-fill ml-2 transition-transform duration-300 ${isProcessOpen ? 'rotate-180' : ''}`}></i>
-              <div className="overflow-hidden pb-[0px] h-0" ref={proItemsRef}>
+              <i className={`cursor-pointer ri-arrow-down-s-fill ml-2 transition-transform duration-300 ${toggle2 ? 'rotate-180' : ''}`}></i>
+              <div className="overflow-hidden pb-[0px] h-0" ref={proItems}>
                 <ul className="proMenu mt-2">
                   {processItems.map((item, index) => (
                     <li key={index} className="text-lg flex items-center p-2 hover:bg-[#FFF9E6] rounded-md">
@@ -330,22 +347,22 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-
+            
             <li className="text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent cursor-pointer hover:border-[#FCB714] p-2 transition-all duration-200">
               <NavLink to="/about">About Us</NavLink>
             </li>
-
+            
             <li className="text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent cursor-pointer hover:border-[#FCB714] p-2 transition-all duration-200">
               Enquire Now
             </li>
-
-            <li
-              onClick={handleMobBlogToggle}
+            
+            <li 
+              onClick={mobBlogHandler} 
               className="cursor-pointer text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent hover:border-[#FCB714] p-2 transition-all duration-200"
             >
               Blogs
-              <i className={`cursor-pointer ri-arrow-down-s-fill ml-2 transition-transform duration-300 ${mobBlogToggle ? 'rotate-180' : ''}`}></i>
-              <div ref={mobBlogListRef} className="overflow-hidden pb-[0px] h-0">
+              <i className={`cursor-pointer ri-arrow-down-s-fill ml-2 transition-transform duration-300 ${MobBlogToggle ? 'rotate-180' : ''}`}></i>
+              <div ref={mobBlogList} className="overflow-hidden pb-[0px] h-0">
                 <ul className="mt-2">
                   {blogs.map((b, index) => {
                     return (
@@ -359,7 +376,7 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-
+            
             <button className="px-3 sm:text-[1.2rem] rounded-lg py-2 mt-5 text-[1rem] border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 w-fit cursor-pointer">
               <i className="ri-quote-text mr-2"></i>Get Free Quote
             </button>
@@ -371,4 +388,3 @@ const Header = () => {
 };
 
 export default Header;
-```

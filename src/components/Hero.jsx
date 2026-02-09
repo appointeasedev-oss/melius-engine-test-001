@@ -8,7 +8,7 @@ const Hero = () => {
     let hello = useRef();
     let slide = useRef();
     let text = useRef();
-
+    
     useEffect(() => {
         let tl = gsap.timeline({
             scrollTrigger: {
@@ -17,18 +17,18 @@ const Hero = () => {
                 toggleActions: "play reverse play reverse",
             },
         });
-
+        
         tl.to(slide.current, {
             left: '50%',
             x: '-50%',
             duration: 0.5,
         }, 'a')
-
+        
         tl.to(hello.current, {
             right: window.innerWidth < 640 ? '10%' : '-0%',
             duration: 0.5,
         }, 'a')
-
+        
         tl.to(text.current, {
             opacity: 1,
             x: -15,
@@ -38,8 +38,8 @@ const Hero = () => {
 
     return (
         <div className="h-[100vh] w-[100vw] relative overflow-hidden">
-            <div
-                className="h-[100vh] w-[100vw] bg-[#FFB600] absolute top-0 flex justify-between items-center p-8 lg:p-18"
+            <div 
+                className="h-[100vh] w-[100vw] bg-[#FFB600] absolute top-0 flex justify-between items-center p-8 lg:p-18" 
                 ref={slide}
                 style={{ left: '-50%' }}
             >
@@ -73,7 +73,7 @@ const Hero = () => {
                         </p>
                     </div>
                 </div>
-
+                
                 <div className="hello w-[50%] absolute right-[-22%] top-[2%] sm:top-[50%] sm:-translate-y-[50%] sm:flex sm:flex-col sm:w-fit" ref={hello}>
                     <h1 className="text-[27vw] font-bold uppercase leading-none sm:text-[8rem] lg:text-[9.5rem] xl:text-[10.5rem]">he</h1>
                     <div className="h-fit w-fit flex mt-[-15px] gap-2">
@@ -81,7 +81,7 @@ const Hero = () => {
                         <div className="w-[5vw] h-[5vw] self-end rounded-full bg-[#FFB600] mb-[5px] sm:w-[2rem] sm:h-[2rem] lg:w-[2.2rem] lg:h-[2.2rem]"></div>
                     </div>
                 </div>
-
+                
                 <i className="arrow absolute bottom-[10px] right-[10px] text-white text-[3.5vw] sm:text-[1.2rem] md:right-[23px] md:text-[1.4rem] ri-arrow-down-line"></i>
             </div>
         </div>

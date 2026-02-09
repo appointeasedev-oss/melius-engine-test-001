@@ -1,4 +1,3 @@
-```javascript
 import React from "react";
 
 const Card = ({ icon, head, para }) => {
@@ -15,4 +14,3 @@ const Card = ({ icon, head, para }) => {
 };
 
 export default Card;
-```

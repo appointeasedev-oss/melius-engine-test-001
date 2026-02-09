@@ -1,4 +1,3 @@
-```javascript
 import React from 'react'
 import FootHead from './FootHead'
 import Footitems from './FootItems'
@@ -82,7 +81,7 @@ const Footer = () => {
             <img className='h-7 md:h-10 lg:h-7 xl:h-8 cursor-pointer' src={spon3} alt='Sponsers Image'/>
             <img className='h-12 md:h-17 lg:h-9 xl:h-13 cursor-pointer' src={spon4} alt='Sponsers Image'/>
           </div>
-          <div className='flex'>
+          <div className='flex'>          
             <h3 className='bg-yellow-400 px-1 py-1 text-white text-sm md:font-bold lg:text-[0.8rem] xl:text-[0.9rem]'>DMCA</h3>
             <h3 className='bg-black text-white px-1 py-1  md:font-bold text-sm lg:text-[0.8rem] xl:text-[0.9rem]'>PROTECTED</h3>
           </div>
@@ -93,4 +92,3 @@ const Footer = () => {
 }
 
 export default Footer
-```

@@ -1,4 +1,3 @@
-```javascript
 import React, { useEffect, useRef, useState } from "react";
 import Hero from "./components/Hero";
 import "./index.css";
@@ -67,7 +66,7 @@ const Home = () => {
   };
   //  ye upper ka code menu ko slide krwanay ky lie hy
   const [isServiceOpen, setIsServiceOpen] = useState(false);
-  // yaha sy upper ka code desktop wlay menu kay service item ka hy
+  // yaha sy upper ka code desktop wlay menu kay service item ka hy 
   const [isProcessOpen, setIsProcessOpen] = useState(false);
 
   // yaha sy upper ka code desktop wlay menu kay process item ka hy
@@ -98,4 +97,3 @@ const Home = () => {
 };
 
 export default Home;
-```

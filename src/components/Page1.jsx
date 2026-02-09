@@ -1,4 +1,3 @@
-```javascript
 import React, { useState } from 'react'
 import Page1Content from './Page1Content'
 import Page1Slider from './Page1Slider'
@@ -63,4 +62,3 @@ const Page1 = () => {
 }
 
 export default Page1
-```

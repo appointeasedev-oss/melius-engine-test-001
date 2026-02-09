@@ -1,4 +1,3 @@
-```javascript
 import React from 'react'
 import latest from '../../assets/latest-main.jpg'
 import latest1 from '../../assets/latest1.jpg'
@@ -27,4 +26,3 @@ const Latest = () => {
 }
 
 export default Latest
-```

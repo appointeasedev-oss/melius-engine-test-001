@@ -1,4 +1,3 @@
-```javascript
 import React, { useState } from "react";
 import DevItems from "./DevItems";
 // Mobile icons
@@ -59,11 +58,11 @@ const Dev = () => {
         <ul className="border-b border-zinc-700 px-4 sm:px-10 py-8 flex flex-wrap gap-4 md:gap-2 md:px-2 lg:gap-10 justify-center">
           <li className="relative" onClick={() => setActiveTab("Mobile")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "Mobile" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md uppercase transition-all duration-300
+                className={`skew-x-12 block text-md uppercase transition-all duration-300 
         ${activeTab === "Mobile" ? "text-white" : "text-black"}`}
               >
                 Mobile
@@ -72,11 +71,11 @@ const Dev = () => {
           </li>
           <li className="relative" onClick={() => setActiveTab("Front End")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "Front End" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md uppercase transition-all duration-300
+                className={`skew-x-12 block text-md uppercase transition-all duration-300 
         ${activeTab === "Front End" ? "text-white" : "text-black"}`}
               >
                 Front End
@@ -85,11 +84,11 @@ const Dev = () => {
           </li>
           <li className="relative" onClick={() => setActiveTab("Database")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "Database" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md uppercase transition-all duration-300
+                className={`skew-x-12 block text-md uppercase transition-all duration-300 
         ${activeTab === "Database" ? "text-white" : "text-black"}`}
               >
                 Database
@@ -98,11 +97,11 @@ const Dev = () => {
           </li>
           <li className="relative" onClick={() => setActiveTab("BackEnd")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "BackEnd" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md uppercase transition-all duration-300
+                className={`skew-x-12 block text-md uppercase transition-all duration-300 
         ${activeTab === "BackEnd" ? "text-white" : "text-black"}`}
               >
                 Backend
@@ -111,11 +110,11 @@ const Dev = () => {
           </li>
           <li className="relative" onClick={() => setActiveTab("CMS")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "CMS" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md uppercase transition-all duration-300
+                className={`skew-x-12 block text-md uppercase transition-all duration-300 
         ${activeTab === "CMS" ? "text-white" : "text-black"}`}
               >
                 CMS
@@ -124,11 +123,11 @@ const Dev = () => {
           </li>
           <li className="relative" onClick={() => setActiveTab("ops")}>
             <div
-              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group
+              className={`-skew-x-12 px-6 py-[0.6rem] cursor-pointer transition-all duration-300 group 
       ${activeTab === "ops" ? "bg-[#01345B]" : ""}`}
             >
               <span
-                className={`skew-x-12 block text-md transition-all duration-300
+                className={`skew-x-12 block text-md transition-all duration-300 
         ${activeTab === "ops" ? "text-white" : "text-black"}`}
               >
                 Infra and DevOps
@@ -233,4 +232,3 @@ const Dev = () => {
 };
 
 export default Dev;
-```
