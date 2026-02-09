@@ -1,7 +1,8 @@
+```javascript
 import React from 'react'
 import Home from './Home'
 import About from './pages/about/About'
-import ScrollToTop from "./ScrollToTop"; 
+import ScrollToTop from "./ScrollToTop";
 import { createBrowserRouter ,RouterProvider} from 'react-router-dom'
 import { BlogProvider } from './context/Context'
 import Blogs from './pages/Blog/Blogs'
@@ -31,7 +32,7 @@ const App = () => {
 ])
   return (
     <div>
-      <BlogProvider>           
+      <BlogProvider>
         <RouterProvider router={router} />
       </BlogProvider>
     </div>
@@ -39,5 +40,4 @@ const App = () => {
 }
 
 export default App
-
-
+```
