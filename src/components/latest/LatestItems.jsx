@@ -1,3 +1,4 @@
+```jsx
 import React from 'react'
 const LatestItems = ({img, head}) => {
   return (
@@ -12,3 +13,5 @@ const LatestItems = ({img, head}) => {
 }
 
 export default LatestItems
+```
+# Auto improvement by Melius

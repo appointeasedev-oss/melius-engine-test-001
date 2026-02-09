@@ -1,3 +1,4 @@
+```javascript
 import React from "react";
 
 const Page1Content = ({ head, para }) => {
@@ -24,3 +25,5 @@ const Page1Content = ({ head, para }) => {
 };
 
 export default Page1Content;
+```
+# Auto improvement by Melius

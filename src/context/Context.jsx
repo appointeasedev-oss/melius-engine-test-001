@@ -40,7 +40,6 @@ const BlogData = [
   },
 ];
 
-
 export const BlogProvider = ({ children }) => {
   return (
     <BlogContext.Provider value={BlogData}>
@@ -52,3 +51,4 @@ export const BlogProvider = ({ children }) => {
 export const useBlogData = () => {
   return useContext(BlogContext);
 };
+# Auto improvement by Melius

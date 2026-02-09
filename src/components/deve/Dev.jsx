@@ -1,3 +1,4 @@
+```javascript
 import React, { useState } from "react";
 import DevItems from "./DevItems";
 // Mobile icons
@@ -232,3 +233,5 @@ const Dev = () => {
 };
 
 export default Dev;
+```
+# Auto improvement by Melius

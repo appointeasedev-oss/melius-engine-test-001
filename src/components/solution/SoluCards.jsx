@@ -1,3 +1,4 @@
+```javascript
 import React from 'react'
 
 const SoluCards = ({icon, head, para}) => {
@@ -13,3 +14,5 @@ const SoluCards = ({icon, head, para}) => {
 }
 
 export default SoluCards
+```
+# Auto improvement by Melius

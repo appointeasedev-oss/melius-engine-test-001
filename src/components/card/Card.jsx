@@ -1,3 +1,4 @@
+```javascript
 import React from "react";
 
 const Card = ({ icon, head, para }) => {
@@ -6,11 +7,12 @@ const Card = ({ icon, head, para }) => {
       <img className="h-[5.3rem]" src={icon} alt="Card Icon" />
       <div className="mt-6">
         <h3 className="capitalize font-semibold text-2xl lg:text-[1.8rem]">{head}</h3>
-        <p className="opacity-[0.7] text-sm lg:text-md mt-2">{para}
-        </p>
+        <p className="opacity-[0.7] text-sm lg:text-md mt-2">{para}</p>
       </div>
     </div>
   );
 };
 
 export default Card;
+```
+# Auto improvement by Melius

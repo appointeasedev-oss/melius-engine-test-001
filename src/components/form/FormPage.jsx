@@ -43,12 +43,13 @@ const FormPage = () => {
           type="text"
           placeholder="Add Description"
         />
-        <buton className="uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer">
+        <button className="uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer">
           Submit
-        </buton>
+        </button>
       </form>
     </div>
   );
 };
 
 export default FormPage;
+# Auto improvement by Melius

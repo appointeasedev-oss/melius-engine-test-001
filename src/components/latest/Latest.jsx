@@ -4,6 +4,7 @@ import latest1 from '../../assets/latest1.jpg'
 import latest2 from '../../assets/latest2.jpg'
 import latest3 from '../../assets/latest3.jpg'
 import LatestItems from './LatestItems' 
+
 const Latest = () => {
   return (
     <div className='px-3 mt-20 max-w-[1600px] mx-auto'>
@@ -26,3 +27,4 @@ const Latest = () => {
 }
 
 export default Latest
+# Auto improvement by Melius

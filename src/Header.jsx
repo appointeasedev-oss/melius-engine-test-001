@@ -1,3 +1,4 @@
+```javascript
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 import logo from "./assets/logo.png";
@@ -388,3 +389,5 @@ const Header = () => {
 };
 
 export default Header;
+```
+# Auto improvement by Melius

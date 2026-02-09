@@ -1,3 +1,4 @@
+```javascript
 import React from 'react'
 
 const MiniBox = ({icon, head, para}) => {
@@ -5,11 +6,13 @@ const MiniBox = ({icon, head, para}) => {
     <div className='flex flex-col justify-center items-center'>
         <img className='w-22 md:w-30 lg:w-22' src={icon} alt='Icon image'/>
         <div className='flex flex-col gap-3'>
-          <h3 className='text-2xl text-center'>{head}</h3>
-          <p className='text-center text-[0.9rem]'>{para}</p>
+          <h3 className='text-2xl text-center font-semibold'>{head}</h3>
+          <p className='text-center text-[0.9rem] leading-relaxed'>{para}</p>
         </div>
     </div>
   )
 }
 
 export default MiniBox
+```
+# Auto improvement by Melius
