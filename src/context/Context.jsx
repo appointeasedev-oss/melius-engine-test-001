@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const BlogContext = createContext();
 
@@ -41,8 +41,22 @@ const BlogData = [
 ];
 
 export const BlogProvider = ({ children }) => {
+  const [blogData, setBlogData] = useState(BlogData);
+
+  const updateBlog = (id, updatedBlog) => {
+    setBlogData(prev => prev.map(blog => blog.id === id ? { ...blog, ...updatedBlog } : blog));
+  };
+
+  const addBlog = (newBlog) => {
+    setBlogData(prev => [...prev, { ...newBlog, id: prev.length + 1 }]);
+  };
+
+  const deleteBlog = (id) => {
+    setBlogData(prev => prev.filter(blog => blog.id !== id));
+  };
+
   return (
-    <BlogContext.Provider value={BlogData}>
+    <BlogContext.Provider value={{ blogData, updateBlog, addBlog, deleteBlog }}>
       {children}
     </BlogContext.Provider>
   );

@@ -1,3 +1,4 @@
+```javascript
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,4 +18,5 @@ function Page1() {
 }
 
 export default Page1;
+```
 # Auto improvement by Melius

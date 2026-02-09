@@ -1,3 +1,4 @@
+```javascript
 import React, { useMemo } from 'react'
 import Header from '../../Header'
 import Footer from '../../components/footer/Footer'
@@ -36,4 +37,5 @@ const Blogs = () => {
 }
 
 export default Blogs
+```
 # Auto improvement by Melius

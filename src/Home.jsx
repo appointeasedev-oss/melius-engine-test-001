@@ -16,15 +16,16 @@ import Latest from "./components/latest/Latest";
 import Header from './Header'
 
 const Home = () => {
-  let service = useRef();
-  let items = useRef();
-  let outerDiv = useRef();
-  let [toggle, setToggle] = useState(false);
-  let serviceClick = () => {
-    let dupToggle = !toggle;
-    setToggle(dupToggle);
+  const service = useRef();
+  const items = useRef();
+  const outerDiv = useRef();
+  const [toggle, setToggle] = useState(false);
 
-    if (dupToggle) {
+  const serviceClick = () => {
+    const newToggle = !toggle;
+    setToggle(newToggle);
+
+    if (newToggle) {
       service.current.style.borderBottom = "2px solid #FFB600";
       items.current.style.height = "fit-content";
       outerDiv.current.style.height = "70vh";
@@ -34,16 +35,16 @@ const Home = () => {
       outerDiv.current.style.height = "0px";
     }
   };
-  // upper ka code menu ky services button ky lie hy
 
-  let [toggle2, setToggle2] = useState(false);
-  let process = useRef();
-  let proItems = useRef();
-  let processClick = () => {
-    let dupli2Toggle = !toggle2;
-    setToggle2(dupli2Toggle);
+  const [toggle2, setToggle2] = useState(false);
+  const process = useRef();
+  const proItems = useRef();
 
-    if (dupli2Toggle) {
+  const processClick = () => {
+    const newToggle2 = !toggle2;
+    setToggle2(newToggle2);
+
+    if (newToggle2) {
       process.current.style.borderBottom = "2px solid #FFB600";
       proItems.current.style.height = "fit-content";
       proItems.current.style.paddingBottom = "5px";
@@ -53,25 +54,23 @@ const Home = () => {
       proItems.current.style.paddingBottom = "0px";
     }
   };
-  // upper ka code process wlaay button ky lie hy
 
-  let slideMenu = useRef();
-  let [menuToggle, setMenuToggle] = useState(false);
-  let menuClick = () => {
-    let dupli3Toggle = !menuToggle;
-    setMenuToggle(dupli3Toggle);
-    if (dupli3Toggle) {
+  const slideMenu = useRef();
+  const [menuToggle, setMenuToggle] = useState(false);
+
+  const menuClick = () => {
+    const newMenuToggle = !menuToggle;
+    setMenuToggle(newMenuToggle);
+    if (newMenuToggle) {
       slideMenu.current.style.height = "fit-content";
     } else {
       slideMenu.current.style.height = "0px";
     }
   };
-  //  ye upper ka code menu ko slide krwanay ky lie hy
+
   const [isServiceOpen, setIsServiceOpen] = useState(false);
-  // yaha sy upper ka code desktop wlay menu kay service item ka hy
   const [isProcessOpen, setIsProcessOpen] = useState(false);
 
-  // yaha sy upper ka code desktop wlay menu kay process item ka hy
   return (
     <div className="relative ">
 
@@ -79,7 +78,6 @@ const Home = () => {
         <Hero />
       </div>
       <div className="main py-3 mx-auto max-w-[1700px]">
-        {/* ye Header ka code hy  */}
         <div className="header w-[100vw] pr-2">
           <Header />
 
