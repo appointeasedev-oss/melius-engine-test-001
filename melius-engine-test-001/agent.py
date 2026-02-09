@@ -3,7 +3,6 @@ import datetime
 from pathlib import Path
 
 from utils.repo import list_files
-from utils.safety import snapshot, restore, build_ok
 from planner import plan
 from executor import execute
 
@@ -55,14 +54,7 @@ def main():
     improvement_plan = plan(files, memory)
 
     # --------------- EXECUTE -----------------
-    snap = snapshot()
     execute(improvement_plan)
-
-    # --------------- BUILD CHECK -----------------
-    if not build_ok():
-        restore(snap)
-        print("[MELIUS] Build failed. Restored snapshot.")
-        return
 
     # --------------- LOGGING -----------------
     entry = {
