@@ -1,33 +1,14 @@
-```jsx
-import React from 'react';
-
-interface LatestItemsProps {
-  data: {
-    title: string;
-    date: string;
-    image: string;
-    alt?: string;
-  }[];
-}
-
-const LatestItems: React.FC<LatestItemsProps> = ({ data }) => {
+import React from 'react'
+const LatestItems = ({img, head}) => {
   return (
-    <div className="latest-items">
-      <h2>Latest Updates</h2>
-      <div className="items-container">
-        {data.map((item, index) => (
-          <article key={index} className="item">
-            <img src={item.image} alt={item.alt || 'Latest update'} loading="lazy" />
-            <div className="item-content">
-              <h3>{item.title}</h3>
-              <p>{item.date}</p>
-            </div>
-          </article>
-        ))}
+    <div className='flex latestCard gap-4 sm:w-[30rem] md:w-[35rem] lg:mx-0 lg:w-[25rem] py-3 pr-4 mx-8 shadow-[0_2px_10px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-all duration-300'>
+      <img className='h-14 latestImg' src={img} alt='Latest Thoughts Image'/>
+      <div className='flex flex-col gap-4'>
+        <h4 className='latestHead text-[0.9rem] sm:text-[1rem] font-semibold '>{head}</h4>
+        <h6 className='latestRead text-sm text-md text-[#01345B] cursor-pointer'>Read More <i class="ri-arrow-right-line"></i></h6>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LatestItems;
-```
+export default LatestItems

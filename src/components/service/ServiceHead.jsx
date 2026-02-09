@@ -1,22 +1,13 @@
-```tsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { pageAnimation } from '../animations';
+import React from 'react'
 
-const ServiceHead: React.FC = () => {
+const ServiceHead = (props) => {
+
   return (
-    <motion.div
-      variants={pageAnimation}
-      initial="hidden"
-      animate="show"
-      exit="exit"
-      className="service-head"
-    >
-      <h1>Services</h1>
-      <p>We provide high-quality services tailored to your needs</p>
-    </motion.div>
-  );
-};
+    <div className='serHead flex gap-4 cursor-pointer w-fit'>
+        <i className="ri-smartphone-fill"></i>
+        <h4 className='text-md '>{props.head}</h4>
+    </div>
+  )
+}
 
-export default ServiceHead;
-```
+export default ServiceHead

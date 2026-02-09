@@ -1,20 +1,12 @@
-```javascript
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
-const ParaBox = ({ title, text }) => {
+function ParaBox({head, para}) {
   return (
-    <section className="para-box" aria-labelledby="para-box-title">
-      <h2 id="para-box-title" className="para-box-title">{title}</h2>
-      <p className="para-box-text">{text}</p>
-    </section>
-  );
-};
+    <div className='flex flex-col justify-center gap-3 items-center lg:items-start lg:justify-start '>
+      <h3 className='text-3xl font-semibold lg:text-4xl'>{head}</h3>
+      <p className='text-center text-[0.95rem] lg:text-start '>{para}</p>
+    </div>
+  )
+}
 
-ParaBox.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
-};
-
-export default ParaBox;
-```
+export default ParaBox

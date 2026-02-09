@@ -1,38 +1,15 @@
-```jsx
-import React from 'react';
-import PropTypes from 'prop-types';
-import './SoluCards.css';
+import React from 'react'
 
-const SoluCards = ({ solution }) => {
+const SoluCards = ({icon, head, para}) => {
   return (
-    <div className="solu-cards">
-      {solution.map((item, index) => (
-        <div key={index} className="solu-card">
-          <div className="solu-card-header">
-            <h3>{item.title}</h3>
-          </div>
-          <div className="solu-card-content">
-            <p>{item.description}</p>
-          </div>
-          <div className="solu-card-footer">
-            <button className="solu-card-button" aria-label={`Learn more about ${item.title}`}>
-              Learn More
-            </button>
-          </div>
-        </div>
-      ))}
+    <div className='devParent flex max-w-[32rem] cursor-pointer hover:shadow-[0_3px_12px_rgba(0,0,0,0.3)] transition-all duration-100 group rounded-lg py-3 px-2 mx-auto lg:pb-15'>
+      <img className='devIcon h-28 ' src={icon} alt='Dev Icon'/>
+      <div className='flex flex-col gap-2'>
+        <h3 className='text-lg capitalize md:text-xl'>{head}</h3>
+        <p className='text-md'>{para}</p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-SoluCards.propTypes = {
-  solution: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
-export default SoluCards;
-```
+export default SoluCards

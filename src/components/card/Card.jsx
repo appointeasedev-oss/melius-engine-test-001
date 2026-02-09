@@ -1,27 +1,16 @@
-```jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Card.css';
+import React from "react";
 
-const Card = ({ title, description, image, slug }) => {
+const Card = ({ icon, head, para }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative h-48 w-full">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
-      </div>
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <Link
-          to={`/blog/${slug}`}
-          className="inline-flex items-center bg-blue-500 text-white font-medium px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200"
-        >
-          Read More
-        </Link>
+    <div className="m-4 px-9 shadow-[0_6px_15px_rgba(0,0,0,0.3)] py-10 pb-24 max-w-[33rem] md:py-15  transform transition duration-300 hover:-translate-y-2 cursor-pointer">
+      <img className="h-[5.3rem]" src={icon} alt="Card Icon" />
+      <div className="mt-6">
+        <h3 className="capitalize font-semibold text-2xl lg:text-[1.8rem]">{head}</h3>
+        <p className="opacity-[0.7] text-sm lg:text-md mt-2">{para}
+        </p>
       </div>
     </div>
   );
 };
 
 export default Card;
-```

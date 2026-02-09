@@ -1,140 +1,99 @@
-```jsx
-import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import './index.css';
-import Header from './Header';
-import Footer from './components/footer/Footer';
-import Dev from './components/deve/Dev';
-import Solutions from './components/solution/Solutions';
-import Service from './components/service/Service';
-import Form from './components/form/Form';
-import Card from './components/card/Card';
-import Latest from './components/latest/Latest';
-import Blog from './pages/Blog';
-import About from './pages/about/About';
-import ScrollToTop from './ScrollToTop';
-import Hero from './components/Hero';
-
-function Home() {
-  const [toggle, setToggle] = useState(false);
-  const [toggle2, setToggle2] = useState(false);
-  const [menuToggle, setMenuToggle] = useState(false);
-  const service = useRef(null);
-  const items = useRef(null);
-  const outerDiv = useRef(null);
-  const process = useRef(null);
-  const proItems = useRef(null);
-  const slideMenu = useRef(null);
-
+import React, { useEffect, useRef, useState } from "react";
+import Hero from "./components/Hero";
+import "./index.css";
+import Page1 from "./components/Page1";
+import logo from "./assets/logo.png";
+import ServiceHead from "./components/service/ServiceHead";
+import ServiceItem from "./components/service/ServiceItem";
+import menu from "./assets/menu.png";
+import Footer from "./components/footer/Footer";
+import CardPage from "./components/card/CardPage";
+import FormPage from "./components/form/FormPage";
+import Solutions from "./components/solution/Solutions";
+import Dev from "./components/deve/Dev";
+import Latest from "./components/latest/Latest";
+import Header from './Header'
+const Home = () => {
+  let service = useRef();
+  let items = useRef();
+  let outerDiv = useRef();
+  let [toggle, setToggle] = useState(false);
   let serviceClick = () => {
-    setToggle(!toggle);
-  };
+    let dupToggle = !toggle;
+    setToggle(dupToggle);
 
+    if (dupToggle) {
+      service.current.style.borderBottom = "2px solid #FFB600";
+      items.current.style.height = "fit-content";
+      outerDiv.current.style.height = "70vh";
+    } else {
+      service.current.style.borderBottom = "2px solid transparent";
+      items.current.style.height = "0px";
+      outerDiv.current.style.height = "0px";
+    }
+  };
+  // upper ka code menu ky services button ky lie hy
+
+  let [toggle2, setToggle2] = useState(false);
+  let process = useRef();
+  let proItems = useRef();
   let processClick = () => {
-    setToggle2(!toggle2);
-  };
+    let dupli2Toggle = !toggle2;
+    setToggle2(dupli2Toggle);
 
+    if (dupli2Toggle) {
+      process.current.style.borderBottom = "2px solid #FFB600";
+      proItems.current.style.height = "fit-content";
+      proItems.current.style.paddingBottom = "5px";
+    } else {
+      process.current.style.borderBottom = "2px solid transparent";
+      proItems.current.style.height = "0px";
+      proItems.current.style.paddingBottom = "0px";
+    }
+  };
+  // upper ka code process wlaay button ky lie hy
+
+  let slideMenu = useRef();
+  let [menuToggle, setMenuToggle] = useState(false);
   let menuClick = () => {
-    setMenuToggle(!menuToggle);
+    let dupli3Toggle = !menuToggle;
+    setMenuToggle(dupli3Toggle);
+    if (dupli3Toggle) {
+      slideMenu.current.style.height = "fit-content";
+    } else {
+      slideMenu.current.style.height = "0px";
+    }
   };
+  //  ye upper ka code menu ko slide krwanay ky lie hy
+  const [isServiceOpen, setIsServiceOpen] = useState(false);
+  // yaha sy upper ka code desktop wlay menu kay service item ka hy 
+  const [isProcessOpen, setIsProcessOpen] = useState(false);
 
-  useEffect(() => {
-    if (service.current) {
-      if (toggle) {
-        service.current.style.borderBottom = "2px solid #FFB600";
-        items.current.style.height = "fit-content";
-        outerDiv.current.style.height = "70vh";
-      } else {
-        service.current.style.borderBottom = "2px solid transparent";
-        items.current.style.height = "0px";
-        outerDiv.current.style.height = "0px";
-      }
-    }
-
-    if (process.current) {
-      if (toggle2) {
-        process.current.style.borderBottom = "2px solid #FFB600";
-        proItems.current.style.height = "fit-content";
-        proItems.current.style.paddingBottom = "5px";
-      } else {
-        process.current.style.borderBottom = "2px solid transparent";
-        proItems.current.style.height = "0px";
-        proItems.current.style.paddingBottom = "0px";
-      }
-    }
-
-    if (slideMenu.current) {
-      if (menuToggle) {
-        slideMenu.current.style.height = "fit-content";
-      } else {
-        slideMenu.current.style.height = "0px";
-      }
-    }
-  }, [toggle, toggle2, menuToggle]);
-
+  // yaha sy upper ka code desktop wlay menu kay process item ka hy
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="body">
-        <Header menuClick={menuClick} />
-        <div className="slide-menu" ref={slideMenu}>
-          <div className="slide-items">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/process">Process</Link>
-            <Link to="/solutions">Solutions</Link>
-            <Link to="/developments">Developments</Link>
-            <Link to="/contact">Contact</Link>
-          </div>
-        </div>
+    <div className="relative ">
+
+      <div className="h-[100vh] w-[100vw]">
         <Hero />
-        <div className="service" ref={service}>
-          <h1 onClick={serviceClick}>Services</h1>
-          <div className="items" ref={items}>
-            <div className="outer-div" ref={outerDiv}>
-              <div className="item">
-                <h3>Service 1</h3>
-                <p>Description of Service 1</p>
-              </div>
-              <div className="item">
-                <h3>Service 2</h3>
-                <p>Description of Service 2</p>
-              </div>
-              <div className="item">
-                <h3>Service 3</h3>
-                <p>Description of Service 3</p>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div className="main py-3 mx-auto max-w-[1700px]">
+        {/* ye Header ka code hy  */}
+        <div className="header w-[100vw] pr-2">
+          <Header />
+
+          <Page1 />
+          <Solutions />
+          <Dev />
+          <CardPage />
+          <Latest />
         </div>
-        <div className="process" ref={process}>
-          <h1 onClick={processClick}>Process</h1>
-          <div className="pro-items" ref={proItems}>
-            <div className="pro-item">
-              <h3>Step 1</h3>
-              <p>Description of Step 1</p>
-            </div>
-            <div className="pro-item">
-              <h3>Step 2</h3>
-              <p>Description of Step 2</p>
-            </div>
-            <div className="pro-item">
-              <h3>Step 3</h3>
-              <p>Description of Step 3</p>
-            </div>
-          </div>
-        </div>
-        <Solutions />
-        <Dev />
-        <Latest />
-        <Card />
-        <Form />
+      </div>
+      <div className="max-1700px mx-auto w-screen">
+        <FormPage />
         <Footer />
       </div>
-    </Router>
+    </div>
   );
-}
+};
 
 export default Home;
-```

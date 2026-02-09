@@ -1,22 +1,9 @@
-```typescript
-import React from 'react';
-import './FootHead.css';
+import React from 'react'
 
-interface FootHeadProps {
-  title: string;
-  subtitle?: string;
-  className?: string;
-  style?: React.CSSProperties;
+const FootHead = (props) => {
+  return (
+    <h3 className='text-2xl uppercase font-semibold'>{props.head}</h3>
+  )
 }
 
-const FootHead: React.FC<FootHeadProps> = ({ title, subtitle, className, style }) => {
-  return (
-    <div className={`foot-head ${className || ''}`} style={style} aria-label="Footer Header">
-      <h2>{title}</h2>
-      {subtitle && <p>{subtitle}</p>}
-    </div>
-  );
-};
-
-export default FootHead;
-```
+export default FootHead

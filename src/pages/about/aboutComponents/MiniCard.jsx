@@ -1,50 +1,15 @@
-```jsx
-import React from 'react';
+import React from 'react'
 
-const MiniCard = ({ title, description, image, link, isExternal = false }) => {
-  const handleClick = (e) => {
-    if (isExternal) {
-      e.preventDefault();
-      window.open(link, '_blank');
-    }
-  };
-
+const MiniCard = ({head, no, para}) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-48 object-cover rounded-t-lg"
-      />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <a
-          href={link}
-          onClick={handleClick}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800"
-          target={isExternal ? '_blank' : '_self'}
-          rel={isExternal ? 'noopener noreferrer' : ''}
-        >
-          Learn more
-          <svg
-            className="w-4 h-4 ml-2"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </a>
-      </div>
+    <div className='bg-white flex flex-col justify-center items-center text-center py-6 pb-8 px-4 sm:pt-0 lg:text-start lg:px-6 lg:items-start'>
+        <div className='sm:flex sm:items-center sm:justify-between sm:w-[55vw]  md:w-[58vw] lg:w-full sm:self-end '>
+            <h4 className='text-xl md:text-2xl lg:text-3xl font-semibold'>{head}</h4>
+            <h2 className='text-[4rem] font-semibold opacity-[0.08] sm:text-[4.3rem]'>{no}</h2>
+        </div>
+      <p className='text-md lg:text-[1.1rem] lg:w-[90%]'>{para}</p>
     </div>
-  );
-};
+  )
+}
 
-export default MiniCard;
-```
+export default MiniCard
