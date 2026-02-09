@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Melius Agent Logs</title>
+  <style>
+    body { font-family: monospace; background:#0f172a; color:#e5e7eb }
+    pre { background:#020617; padding:1rem; border-radius:8px }
+  </style>
+</head>
+<body>
+  <h1>Melius Autonomous Logs</h1>
+  <pre id="log">Loading...</pre>
+
+  <script>
+    fetch('./logs.json')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('log').textContent =
+          JSON.stringify(d, null, 2)
+      })
+  </script>
+</body>
+</html>
