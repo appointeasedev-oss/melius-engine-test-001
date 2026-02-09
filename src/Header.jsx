@@ -6,7 +6,7 @@ import ServiceHead from "./components/service/ServiceHead";
 import ServiceItem from "./components/service/ServiceItem";
 import menu from "./assets/menu.png";
 import { NavLink } from "react-router-dom";
-import { useBlogData } from './context/Context'; 
+import { useBlogData } from './context/Context';
 
 const Header = () => {
   // Service categories data
@@ -70,11 +70,11 @@ const Header = () => {
   let items = useRef();
   let outerDiv = useRef();
   let [toggle, setToggle] = useState(false);
-  
+
   let serviceClick = () => {
     let dupToggle = !toggle;
     setToggle(dupToggle);
-    
+
     // Close process menu when service opens
     if (dupToggle && toggle2) {
       setToggle2(false);
@@ -97,11 +97,11 @@ const Header = () => {
   let [toggle2, setToggle2] = useState(false);
   let process = useRef();
   let proItems = useRef();
-  
+
   let processClick = () => {
     let dupli2Toggle = !toggle2;
     setToggle2(dupli2Toggle);
-    
+
     // Close service menu when process opens
     if (dupli2Toggle && toggle) {
       setToggle(false);
@@ -123,7 +123,7 @@ const Header = () => {
 
   let slideMenu = useRef();
   let [menuToggle, setMenuToggle] = useState(false);
-  
+
   let menuClick = () => {
     let dupli3Toggle = !menuToggle;
     setMenuToggle(dupli3Toggle);
@@ -136,7 +136,7 @@ const Header = () => {
 
   const [isServiceOpen, setIsServiceOpen] = useState(false);
   const [isProcessOpen, setIsProcessOpen] = useState(false);
-  
+
   // Close process when service opens and vice versa
   const handleServiceToggle = () => {
     setIsServiceOpen(prev => !prev);
@@ -144,7 +144,7 @@ const Header = () => {
       setIsProcessOpen(false);
     }
   };
-  
+
   const handleProcessToggle = () => {
     setIsProcessOpen(prev => !prev);
     if (!isProcessOpen) {
@@ -154,7 +154,7 @@ const Header = () => {
 
   const blogList = useRef();
   const [blogToggle, setblogToggle] = useState(false);
-  
+
   let blogClick = ()=>{
     let blog = !blogToggle;
     setblogToggle(blog)
@@ -167,7 +167,7 @@ const Header = () => {
 
   let deskBlog = useRef();
   let [DeskBlogToggle, setDeskBlogToggle] = useState(false);
-  
+
   let deskBlogHandler = ()=>{
     let deskToggle = !DeskBlogToggle;
     setDeskBlogToggle(deskToggle);
@@ -185,7 +185,7 @@ const Header = () => {
 
   let mobBlogList = useRef();
   let [MobBlogToggle, setMobkBlogToggle] = useState(false);
-  
+
   let mobBlogHandler = ()=>{
     let switchToggle = !MobBlogToggle;
     setMobkBlogToggle(switchToggle);
@@ -198,7 +198,7 @@ const Header = () => {
   }
 
   const blogs = useBlogData();
-  
+
   return (
     <div className="sticky z-[999] top-0 bg-white w-[100vw] px-4 max-w-[1700px] mx-auto">
       <div className="sticky z-[999] top-0 bg-white">
@@ -216,7 +216,7 @@ const Header = () => {
             }`}
             onClick={menuClick}
           ></i>
-          
+
           <div className="hidden md:hidden lg:flex w-[70%] md:justify-between">
             <ul className="flex items-center gap-6 lg:gap-8">
               <li
@@ -245,7 +245,7 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              
+
               <li
                 onClick={handleProcessToggle}
                 className="relative cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300"
@@ -264,18 +264,18 @@ const Header = () => {
                   </div>
                 )}
               </li>
-              
+
               <li className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300">
                 <i className="ri-information-line mr-2"></i>
                 <NavLink to="/about">About Us</NavLink>
               </li>
-              
+
               <li className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300">
                 <i className="ri-question-line mr-2"></i>Enquire Now
               </li>
-              
-              <li 
-                onClick={deskBlogHandler} 
+
+              <li
+                onClick={deskBlogHandler}
                 className="cursor-pointer text-[1.1rem] p-2 border-b-2 border-transparent hover:border-[#FFB600] hover:bg-[#FFF9E6] rounded-t-md transition-all duration-300 relative"
               >
                 <i className="ri-article-line mr-2"></i>Blogs
@@ -295,13 +295,13 @@ const Header = () => {
                 </div>
               </li>
             </ul>
-            
+
             <button className="px-4 rounded-lg py-2 text-[1rem] border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 w-fit cursor-pointer">
               <i className="ri-quote-text mr-2"></i>Get Free Quote
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         <div className="mt-3 bg-white h-0 overflow-hidden transition-all duration-300" ref={slideMenu}>
           <ul className="mobileMenu px-4 flex flex-col gap-4 sm:gap-2 pb-4">
@@ -328,7 +328,7 @@ const Header = () => {
                 </div>
               </div>
             </li>
-            
+
             <li
               className="text-[1rem] border-b-[2px] sm:text-[1.2rem] border-transparent hover:border-[#FCB714]  p-2 rounded-md transition-all duration-200"
               ref={process}
@@ -348,17 +348,17 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            
+
             <li className="text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent cursor-pointer hover:border-[#FCB714] p-2 transition-all duration-200">
               <NavLink to="/about">About Us</NavLink>
             </li>
-            
+
             <li className="text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent cursor-pointer hover:border-[#FCB714] p-2 transition-all duration-200">
               Enquire Now
             </li>
-            
-            <li 
-              onClick={mobBlogHandler} 
+
+            <li
+              onClick={mobBlogHandler}
               className="cursor-pointer text-[1rem] sm:text-[1.2rem] border-b-[2px] border-transparent hover:border-[#FCB714] p-2 transition-all duration-200"
             >
               Blogs
@@ -377,7 +377,7 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            
+
             <button className="px-3 sm:text-[1.2rem] rounded-lg py-2 mt-5 text-[1rem] border border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 w-fit cursor-pointer">
               <i className="ri-quote-text mr-2"></i>Get Free Quote
             </button>

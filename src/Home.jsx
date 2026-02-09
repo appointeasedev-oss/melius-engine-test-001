@@ -14,6 +14,7 @@ import Solutions from "./components/solution/Solutions";
 import Dev from "./components/deve/Dev";
 import Latest from "./components/latest/Latest";
 import Header from './Header'
+
 const Home = () => {
   let service = useRef();
   let items = useRef();

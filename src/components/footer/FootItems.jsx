@@ -1,9 +1,9 @@
 import React from 'react'
 
-const FootItems = (props) => {
+const FootItems = ({ item }) => {
   return (
-    <li className='capitalize text-sm cursor-pointer'>
-      {props.item}
+    <li className='capitalize text-sm cursor-pointer hover:text-blue-500 transition-colors duration-200'>
+      {item}
     </li>
   )
 }

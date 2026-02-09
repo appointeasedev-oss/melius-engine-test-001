@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ParaBox({head, para}) {
+function ParaBox({ head, para }) {
   return (
     <div className='flex flex-col justify-center gap-3 items-center lg:items-start lg:justify-start'>
       <h3 className='text-3xl font-semibold lg:text-4xl'>{head}</h3>
