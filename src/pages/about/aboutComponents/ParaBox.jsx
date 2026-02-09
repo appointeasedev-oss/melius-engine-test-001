@@ -1,3 +1,4 @@
+```javascript
 import React from 'react'
 
 function ParaBox({ head, para }) {
@@ -10,4 +11,5 @@ function ParaBox({ head, para }) {
 }
 
 export default ParaBox
+```
 # Auto improvement by Melius
