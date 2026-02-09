@@ -1,1 +1,132 @@
-{"plan": {"description": "Enhance FormPage component with accessibility, state management, and validation", "steps": [{"action": "read", "file": "src/components/FormPage.jsx"}, {"action": "read", "file": "src/assets/formBack.png"}, {"action": "write", "file": "src/components/FormPage.jsx", "new_content": "import React, { useState } from \"react\";\nimport dotBack from '../../assets/formBack.png';\n\nconst FormPage = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    phone: '',\n    skype: '',\n    description: ''\n  });\n  const [errors, setErrors] = useState({});\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n    if (errors[name]) {\n      setErrors(prev => ({\n        ...prev,\n        [name]: ''\n      }));\n    }\n  };\n\n  const validateForm = () => {\n    const newErrors = {};\n    if (!formData.name.trim()) newErrors.name = 'Name is required';\n    if (!formData.email.trim()) newErrors.email = 'Email is required';\n    else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';\n    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';\n    else if (!/^\\d{10,15}$/.test(formData.phone.replace(/\\D/g, ''))) newErrors.phone = 'Invalid phone number';\n    if (!formData.description.trim()) newErrors.description = 'Description is required';\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (validateForm()) {\n      console.log('Form submitted:', formData);\n      // Handle form submission here\n      setFormData({\n        name: '',\n        email: '',\n        phone: '',\n        skype: '',\n        description: ''\n      });\n    }\n  };\n\n  return (\n    <div className=\"p-4 py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto\">\n      <div className=\"lg:h-fit md:w-[50%] lg:w-[40%] \">\n        <h1 className=\"text-3xl font-semibold md:text-4xl md:font-bold\">Drop us a line</h1>\n        <p className=\"text-md mt-4 md:text-lg md:w-fit\">\n          Stay Ahead of Competition with an Intuative Mobile App for Your\n          Business.\n        </p>\n        <img className=\"mt-5 hidden lg:inline\" src={dotBack} alt=\"Dotted Background\"/>\n      </div>\n      <form className=\"flex flex-col gap-4 mt-4 lg:w-[60%] px-2\" onSubmit={handleSubmit}>\n        <div className=\"inputCol flex gap-4\">\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"name\"\n              placeholder=\"Your Name\"\n              value={formData.name}\n              onChange={handleChange}\n              aria-label=\"Name\"\n            />\n            {errors.name && <span className=\"text-red-500 text-sm\">{errors.name}</span>}\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"email\"\n              name=\"email\"\n              placeholder=\"E-mail\"\n              value={formData.email}\n              onChange={handleChange}\n              aria-label=\"Email\"\n            />\n            {errors.email && <span className=\"text-red-500 text-sm\">{errors.email}</span>}\n          </div>\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"tel\"\n              name=\"phone\"\n              placeholder=\"Phone Number\"\n              value={formData.phone}\n              onChange={handleChange}\n              aria-label=\"Phone Number\"\n            />\n            {errors.phone && <span className=\"text-red-500 text-sm\">{errors.phone}</span>}\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"skype\"\n              placeholder=\"Skype\"\n              value={formData.skype}\n              onChange={handleChange}\n              aria-label=\"Skype\"\n            />\n          </div>\n        </div>\n        <input\n          className=\"w-full border-b-1 text-md lg:text-lg border-zinc-400 py-2  outline-none\"\n          type=\"text\"\n          name=\"description\"\n          placeholder=\"Add Description\"\n          value={formData.description}\n          onChange={handleChange}\n          aria-label=\"Description\"\n        />\n        {errors.description && <span className=\"text-red-500 text-sm\">{errors.description}</span>}\n        <button\n          className=\"uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer bg-zinc-800 text-white hover:bg-zinc-700 transition-colors\"\n          type=\"submit\"\n        >\n          Submit\n        </button>\n      </form>\n    </div>\n  );\n};\n\nexport default FormPage;"}, {"action": "write", "file": "src/components/FormPage.jsx", "new_content": "import React, { useState } from \"react\";\nimport dotBack from '../../assets/formBack.png';\n\nconst FormPage = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    phone: '',\n    skype: '',\n    description: ''\n  });\n  const [errors, setErrors] = useState({});\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n    if (errors[name]) {\n      setErrors(prev => ({\n        ...prev,\n        [name]: ''\n      }));\n    }\n  };\n\n  const validateForm = () => {\n    const newErrors = {};\n    if (!formData.name.trim()) newErrors.name = 'Name is required';\n    if (!formData.email.trim()) newErrors.email = 'Email is required';\n    else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';\n    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';\n    else if (!/^\\d{10,15}$/.test(formData.phone.replace(/\\D/g, ''))) newErrors.phone = 'Invalid phone number';\n    if (!formData.description.trim()) newErrors.description = 'Description is required';\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (validateForm()) {\n      console.log('Form submitted:', formData);\n      // Handle form submission here\n      setFormData({\n        name: '',\n        email: '',\n        phone: '',\n        skype: '',\n        description: ''\n      });\n    }\n  };\n\n  return (\n    <div className=\"p-4 py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto\">\n      <div className=\"lg:h-fit md:w-[50%] lg:w-[40%] \">\n        <h1 className=\"text-3xl font-semibold md:text-4xl md:font-bold\">Drop us a line</h1>\n        <p className=\"text-md mt-4 md:text-lg md:w-fit\">\n          Stay Ahead of Competition with an Intuative Mobile App for Your\n          Business.\n        </p>\n        <img className=\"mt-5 hidden lg:inline\" src={dotBack} alt=\"Dotted Background\"/>\n      </div>\n      <form className=\"flex flex-col gap-4 mt-4 lg:w-[60%] px-2\" onSubmit={handleSubmit}>\n        <div className=\"inputCol flex gap-4\">\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"name\"\n              placeholder=\"Your Name\"\n              value={formData.name}\n              onChange={handleChange}\n              aria-label=\"Name\"\n            />\n            {errors.name && <span className=\"text-red-500 text-sm\">{errors.name}</span>}\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"email\"\n              name=\"email\"\n              placeholder=\"E-mail\"\n              value={formData.email}\n              onChange={handleChange}\n              aria-label=\"Email\"\n            />\n            {errors.email && <span className=\"text-red-500 text-sm\">{errors.email}</span>}\n          </div>\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"tel\"\n              name=\"phone\"\n              placeholder=\"Phone Number\"\n              value={formData.phone}\n              onChange={handleChange}\n              aria-label=\"Phone Number\"\n            />\n            {errors.phone && <span className=\"text-red-500 text-sm\">{errors.phone}</span>}\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"skype\"\n              placeholder=\"Skype\"\n              value={formData.skype}\n              onChange={handleChange}\n              aria-label=\"Skype\"\n            />\n          </div>\n        </div>\n        <input\n          className=\"w-full border-b-1 text-md lg:text-lg border-zinc-400 py-2  outline-none\"\n          type=\"text\"\n          name=\"description\"\n          placeholder=\"Add Description\"\n          value={formData.description}\n          onChange={handleChange}\n          aria-label=\"Description\"\n        />\n        {errors.description && <span className=\"text-red-500 text-sm\">{errors.description}</span>}\n        <button\n          className=\"uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer bg-zinc-800 text-white hover:bg-zinc-700 transition-colors\"\n          type=\"submit\"\n        >\n          Submit\n        </button>\n      </form>\n    </div>\n  );\n};\n\nexport default FormPage;"}]}, "logging": [{"step": 1, "action": "read", "file": "src/components/FormPage.jsx", "timestamp": "2025-01-01T00:00:00Z"}, {"step": 2, "action": "read", "file": "src/assets/formBack.png", "timestamp": "2025-01-01T00:00:01Z"}, {"step": 3, "action": "write", "file": "src/components/FormPage.jsx", "new_content": "import React, { useState } from \"react\";\nimport dotBack from '../../assets/formBack.png';\n\nconst FormPage = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    phone: '',\n    skype: '',\n    description: ''\n  });\n  const [errors, setErrors] = useState({});\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n    if (errors[name]) {\n      setErrors(prev => ({\n        ...prev,\n        [name]: ''\n      }));\n    }\n  };\n\n  const validateForm = () => {\n    const newErrors = {};\n    if (!formData.name.trim()) newErrors.name = 'Name is required';\n    if (!formData.email.trim()) newErrors.email = 'Email is required';\n    else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';\n    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';\n    else if (!/^\\d{10,15}$/.test(formData.phone.replace(/\\D/g, ''))) newErrors.phone = 'Invalid phone number';\n    if (!formData.description.trim()) newErrors.description = 'Description is required';\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (validateForm()) {\n      console.log('Form submitted:', formData);\n      // Handle form submission here\n      setFormData({\n        name: '',\n        email: '',\n        phone: '',\n        skype: '',\n        description: ''\n      });\n    }\n  };\n\n  return (\n    <div className=\"p-4 py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto\">\n      <div className=\"lg:h-fit md:w-[50%] lg:w-[40%] \">\n        <h1 className=\"text-3xl font-semibold md:text-4xl md:font-bold\">Drop us a line</h1>\n        <p className=\"text-md mt-4 md:text-lg md:w-fit\">\n          Stay Ahead of Competition with an Intuative Mobile App for Your\n          Business.\n        </p>\n        <img className=\"mt-5 hidden lg:inline\" src={dotBack} alt=\"Dotted Background\"/>\n      </div>\n      <form className=\"flex flex-col gap-4 mt-4 lg:w-[60%] px-2\" onSubmit={handleSubmit}>\n        <div className=\"inputCol flex gap-4\">\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"name\"\n              placeholder=\"Your Name\"\n              value={formData.name}\n              onChange={handleChange}\n              aria-label=\"Name\"\n            />\n            {errors.name && <span className=\"text-red-500 text-sm\">{errors.name}</span>}\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"email\"\n              name=\"email\"\n              placeholder=\"E-mail\"\n              value={formData.email}\n              onChange={handleChange}\n              aria-label=\"Email\"\n            />\n            {errors.email && <span className=\"text-red-500 text-sm\">{errors.email}</span>}\n          </div>\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"tel\"\n              name=\"phone\"\n              placeholder=\"Phone Number\"\n              value={formData.phone}\n              onChange={handleChange}\n              aria-label=\"Phone Number\"\n            />\n            {errors.phone && <span className=\"text-red-500 text-sm\">{errors.phone}</span>}\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"skype\"\n              placeholder=\"Skype\"\n              value={formData.skype}\n              onChange={handleChange}\n              aria-label=\"Skype\"\n            />\n          </div>\n        </div>\n        <input\n          className=\"w-full border-b-1 text-md lg:text-lg border-zinc-400 py-2  outline-none\"\n          type=\"text\"\n          name=\"description\"\n          placeholder=\"Add Description\"\n          value={formData.description}\n          onChange={handleChange}\n          aria-label=\"Description\"\n        />\n        {errors.description && <span className=\"text-red-500 text-sm\">{errors.description}</span>}\n        <button\n          className=\"uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer bg-zinc-800 text-white hover:bg-zinc-700 transition-colors\"\n          type=\"submit\"\n        >\n          Submit\n        </button>\n      </form>\n    </div>\n  );\n};\n\nexport default FormPage;"}, {"step": 4, "action": "write", "file": "src/components/FormPage.jsx", "new_content": "import React, { useState } from \"react\";\nimport dotBack from '../../assets/formBack.png';\n\nconst FormPage = () => {\n  const [formData, setFormData] = useState({\n    name: '',\n    email: '',\n    phone: '',\n    skype: '',\n    description: ''\n  });\n  const [errors, setErrors] = useState({});\n\n  const handleChange = (e) => {\n    const { name, value } = e.target;\n    setFormData(prev => ({\n      ...prev,\n      [name]: value\n    }));\n    if (errors[name]) {\n      setErrors(prev => ({\n        ...prev,\n        [name]: ''\n      }));\n    }\n  };\n\n  const validateForm = () => {\n    const newErrors = {};\n    if (!formData.name.trim()) newErrors.name = 'Name is required';\n    if (!formData.email.trim()) newErrors.email = 'Email is required';\n    else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';\n    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';\n    else if (!/^\\d{10,15}$/.test(formData.phone.replace(/\\D/g, ''))) newErrors.phone = 'Invalid phone number';\n    if (!formData.description.trim()) newErrors.description = 'Description is required';\n    setErrors(newErrors);\n    return Object.keys(newErrors).length === 0;\n  };\n\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    if (validateForm()) {\n      console.log('Form submitted:', formData);\n      // Handle form submission here\n      setFormData({\n        name: '',\n        email: '',\n        phone: '',\n        skype: '',\n        description: ''\n      });\n    }\n  };\n\n  return (\n    <div className=\"p-4 py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto\">\n      <div className=\"lg:h-fit md:w-[50%] lg:w-[40%] \">\n        <h1 className=\"text-3xl font-semibold md:text-4xl md:font-bold\">Drop us a line</h1>\n        <p className=\"text-md mt-4 md:text-lg md:w-fit\">\n          Stay Ahead of Competition with an Intuative Mobile App for Your\n          Business.\n        </p>\n        <img className=\"mt-5 hidden lg:inline\" src={dotBack} alt=\"Dotted Background\"/>\n      </div>\n      <form className=\"flex flex-col gap-4 mt-4 lg:w-[60%] px-2\" onSubmit={handleSubmit}>\n        <div className=\"inputCol flex gap-4\">\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"name\"\n              placeholder=\"Your Name\"\n              value={formData.name}\n              onChange={handleChange}\n              aria-label=\"Name\"\n            />\n            {errors.name && <span className=\"text-red-500 text-sm\">{errors.name}</span>}\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"email\"\n              name=\"email\"\n              placeholder=\"E-mail\"\n              value={formData.email}\n              onChange={handleChange}\n              aria-label=\"Email\"\n            />\n            {errors.email && <span className=\"text-red-500 text-sm\">{errors.email}</span>}\n          </div>\n          <div className=\"inputGap\">\n            <input\n              className=\"w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"tel\"\n              name=\"phone\"\n              placeholder=\"Phone Number\"\n              value={formData.phone}\n              onChange={handleChange}\n              aria-label=\"Phone Number\"\n            />\n            {errors.phone && <span className=\"text-red-500 text-sm\">{errors.phone}</span>}\n            <input\n              className=\"w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none\"\n              type=\"text\"\n              name=\"skype\"\n              placeholder=\"Skype\"\n              value={formData.skype}\n              onChange={handleChange}\n              aria-label=\"Skype\"\n            />\n          </div>\n        </div>\n        <input\n          className=\"w-full border-b-1 text-md lg:text-lg border-zinc-400 py-2  outline-none\"\n          type=\"text\"\n          name=\"description\"\n          placeholder=\"Add Description\"\n          value={formData.description}\n          onChange={handleChange}\n          aria-label=\"Description\"\n        />\n        {errors.description && <span className=\"text-red-500 text-sm\">{errors.description}</span>}\n        <button\n          className=\"uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer bg-zinc-800 text-white hover:bg-zinc-700 transition-colors\"\n          type=\"submit\"\n        >\n          Submit\n        </button>\n      </form>\n    </div>\n  );\n};\n\nexport default FormPage;"}]}}
+import React, { useState } from "react";
+import dotBack from '../../assets/formBack.png';
+
+const FormPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    skype: '',
+    description: ''
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(formData.email)) newErrors.email = 'Invalid email format';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
+    else if (!/^\\d{10,15}$/.test(formData.phone.replace(/\\D/g, ''))) newErrors.phone = 'Invalid phone number';
+    if (!formData.description.trim()) newErrors.description = 'Description is required';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log('Form submitted:', formData);
+      // Handle form submission here
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        skype: '',
+        description: ''
+      });
+    }
+  };
+
+  return (
+    <div className="p-4 py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto">
+      <div className="lg:h-fit md:w-[50%] lg:w-[40%] ">
+        <h1 className="text-3xl font-semibold md:text-4xl md:font-bold">Drop us a line</h1>
+        <p className="text-md mt-4 md:text-lg md:w-fit">
+          Stay Ahead of Competition with an Intuative Mobile App for Your
+          Business.
+        </p>
+        <img className="mt-5 hidden lg:inline" src={dotBack} alt="Dotted Background"/>
+      </div>
+      <form className="flex flex-col gap-4 mt-4 lg:w-[60%] px-2" onSubmit={handleSubmit}>
+        <div className="inputCol flex gap-4">
+          <div className="inputGap">
+            <input
+              className="w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              aria-label="Name"
+            />
+            {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
+            <input
+              className="w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none"
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value={formData.email}
+              onChange={handleChange}
+              aria-label="Email"
+            />
+            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+          </div>
+          <div className="inputGap">
+            <input
+              className="w-full  text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none"
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              aria-label="Phone Number"
+            />
+            {errors.phone && <span className="text-red-500 text-sm">{errors.phone}</span>}
+            <input
+              className="w-full text-md lg:text-lg border-b-1 border-zinc-400 py-2 outline-none"
+              type="text"
+              name="skype"
+              placeholder="Skype"
+              value={formData.skype}
+              onChange={handleChange}
+              aria-label="Skype"
+            />
+          </div>
+        </div>
+        <input
+          className="w-full border-b-1 text-md lg:text-lg border-zinc-400 py-2  outline-none"
+          type="text"
+          name="description"
+          placeholder="Add Description"
+          value={formData.description}
+          onChange={handleChange}
+          aria-label="Description"
+        />
+        {errors.description && <span className="text-red-500 text-sm">{errors.description}</span>}
+        <button
+          className="uppercase px-8 py-2 lg:px-13 text-lg border-2 border-zinc-800 rounded-md w-fit mt-5 cursor-pointer bg-zinc-800 text-white hover:bg-zinc-700 transition-colors"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default FormPage;
