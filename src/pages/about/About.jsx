@@ -1,3 +1,4 @@
+```javascript
 import React from "react";
 import Header from "../../Header";
 import MiniBox from "./aboutComponents/MiniBox";
@@ -11,6 +12,7 @@ import award2 from './aboutAssets/award2.png'
 import award3 from './aboutAssets/award3.png'
 import FormPage from "../../components/form/FormPage";
 import Footer from "../../components/footer/Footer";
+
 const About = () => {
   return (
     <div className="mx-auto translate-x-[-50%] absolute left-[50%] w-screen  max-w-[1600px] ">
@@ -111,4 +113,5 @@ const About = () => {
 };
 
 export default About;
+```
 # Auto improvement by Melius

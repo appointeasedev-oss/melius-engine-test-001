@@ -1,6 +1,7 @@
 ```javascript
 import React from "react";
 import dotBack from '../../assets/formBack.png'
+
 const FormPage = () => {
   return (
     <div className="p-4  py-15 md:py-30 lg:p-35 lg:py-25 flex flex-col gap-4 lg:gap-12 bg-zinc-100 md:flex-row md:justify-center mt-22 w-full max-w-[1600px] mx-auto ">

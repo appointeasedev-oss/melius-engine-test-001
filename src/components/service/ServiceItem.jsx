@@ -1,3 +1,4 @@
+```javascript
 import React from 'react'
 
 const ServiceItem = (props) => {
@@ -10,4 +11,5 @@ const ServiceItem = (props) => {
 }
 
 export default ServiceItem
+```
 # Auto improvement by Melius

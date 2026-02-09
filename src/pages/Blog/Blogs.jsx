@@ -17,7 +17,6 @@ const Blogs = () => {
   return blogData.find((b) => b.name === route);
 }, [blogData, route]);
 
-  console.log(finalData)
   return (
     <div className='relative max-w-[1600px] mx-auto w-screen '>
       <Header/>
