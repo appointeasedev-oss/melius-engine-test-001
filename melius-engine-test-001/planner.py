@@ -5,15 +5,13 @@ from utils.repo import read
 
 def plan(files, memory, retries=3):
     """
-    Returns a dict:
+    Returns:
     {
         "read": [...],
-        "edit": { "path/to/file": "improved content" },
+        "edit": { "path/to/file": "improved code only" },
         "summary": "what improved",
         "next": [...]
     }
-
-    Only text/code files in /src are read. Images/binaries are skipped.
     """
     TEXT_EXTENSIONS = (
         ".js", ".ts", ".tsx", ".jsx", ".vue",
@@ -30,7 +28,7 @@ def plan(files, memory, retries=3):
         {"role": "system", "content": CORE_SOUL},
         {"role": "user", "content": json.dumps({
             "memory": memory,
-            "STRICT_RULE": "Return ONLY valid JSON. No text. No markdown."
+            "STRICT_RULE": "Return ONLY improved CODE. Do NOT wrap in JSON or add metadata."
         })}
     ]
 
@@ -51,18 +49,17 @@ def plan(files, memory, retries=3):
                 ]
                 improved = chat(prompt)
                 if improved.strip():
+                    # Only take the code string
                     data["edit"][fpath] = improved
                     data["summary"] += f" | Improved {fpath}"
                 else:
                     # fallback minimal improvement
                     if fpath.endswith((".js", ".ts", ".tsx", ".jsx", ".vue")):
-                        content += "\n// Auto improvement by Melius\n"
+                        data["edit"][fpath] = content + "\n// Auto improvement by Melius\n"
                     elif fpath.endswith(".py"):
-                        content += "\n# Auto improvement by Melius\n"
+                        data["edit"][fpath] = content + "\n# Auto improvement by Melius\n"
                     else:
-                        content += "\n# Auto improvement by Melius\n"
-
-                    data["edit"][fpath] = content
+                        data["edit"][fpath] = content + "\n# Auto improvement by Melius\n"
                     data["summary"] += f" | Forced minimal improvement {fpath}"
 
             return data
@@ -70,7 +67,7 @@ def plan(files, memory, retries=3):
         except Exception as e:
             # Retry with previous responses
             prompt_base.append({"role": "assistant", "content": improved if 'improved' in locals() else ""})
-            prompt_base.append({"role": "user", "content": f"ERROR: {e}. Return ONLY corrected JSON."})
+            prompt_base.append({"role": "user", "content": f"ERROR: {e}. Return ONLY improved CODE."})
 
     # fallback if all retries fail
     return {
