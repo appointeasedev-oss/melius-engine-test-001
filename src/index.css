@@ -2,21 +2,15 @@
 @import "tailwindcss";
 
 * {
-  /* margin: 0;
-  padding: 0; */
   box-sizing: border-box;
 }
 body {
   height: 100%;
   max-width: 1500px;
-  /* margin: 0px auto; */
   overflow-x: hidden;
 }
 .arrow {
-  animation-name: ani;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  animation: ani 1.5s ease-in-out infinite;
 }
 @keyframes ani {
   0% {

@@ -1,3 +1,4 @@
+```javascript
 import React, { createContext, useContext, useState } from "react";
 
 const BlogContext = createContext();
@@ -65,4 +66,5 @@ export const BlogProvider = ({ children }) => {
 export const useBlogData = () => {
   return useContext(BlogContext);
 };
+```
 # Auto improvement by Melius

@@ -1,3 +1,4 @@
+```javascript
 import React from 'react'
 
 const FootItems = ({ item, onClick }) => {
@@ -12,4 +13,5 @@ const FootItems = ({ item, onClick }) => {
 }
 
 export default FootItems
+```
 # Auto improvement by Melius

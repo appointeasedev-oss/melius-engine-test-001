@@ -75,7 +75,7 @@ const About = () => {
         <div className="px-8 lg:px-20 mt-10 lg:flex lg:items-center">
           <div className="flex flex-col gap-7 text-center lg:w-[70%]">
               <h1 className="text-[1.85rem] font-semibold lg:text-[2.5rem] lg:whitespace-nowrap">Awards & Recognition</h1>
-            <div className="flex flex-row-reverse justify-center gap-5">          
+            <div className="flex flex-row-reverse justify-center gap-5">
               <img className="w-18 transform grayscale hover:grayscale-0 hover:scale-150 transition-all duration-400 cursor-pointer" src={award1} alt="Awards Icon"/>
               <img className="w-18 transform grayscale hover:grayscale-0 hover:scale-150 transition-all duration-400 cursor-pointer" src={award2} alt="Awards Icon"/>
               <img className="w-18 transform grayscale hover:grayscale-0 hover:scale-150 transition-all duration-400 cursor-pointer" src={award3} alt="Awards Icon"/>
