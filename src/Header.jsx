@@ -66,74 +66,6 @@ const Header = () => {
     { name: "Product Engineering", icon: "ri-tools-line" }
   ];
 
-  let service = useRef();
-  let items = useRef();
-  let outerDiv = useRef();
-  let [toggle, setToggle] = useState(false);
-
-  let serviceClick = () => {
-    let dupToggle = !toggle;
-    setToggle(dupToggle);
-
-    // Close process menu when service opens
-    if (dupToggle && toggle2) {
-      setToggle2(false);
-      process.current.style.borderBottom = "2px solid transparent";
-      proItems.current.style.height = "0px";
-      proItems.current.style.paddingBottom = "0px";
-    }
-
-    if (dupToggle) {
-      service.current.style.borderBottom = "2px solid #FFB600";
-      items.current.style.height = "fit-content";
-      outerDiv.current.style.height = "70vh";
-    } else {
-      service.current.style.borderBottom = "2px solid transparent";
-      items.current.style.height = "0px";
-      outerDiv.current.style.height = "0px";
-    }
-  };
-
-  let [toggle2, setToggle2] = useState(false);
-  let process = useRef();
-  let proItems = useRef();
-
-  let processClick = () => {
-    let dupli2Toggle = !toggle2;
-    setToggle2(dupli2Toggle);
-
-    // Close service menu when process opens
-    if (dupli2Toggle && toggle) {
-      setToggle(false);
-      service.current.style.borderBottom = "2px solid transparent";
-      items.current.style.height = "0px";
-      outerDiv.current.style.height = "0px";
-    }
-
-    if (dupli2Toggle) {
-      process.current.style.borderBottom = "2px solid #FFB600";
-      proItems.current.style.height = "fit-content";
-      proItems.current.style.paddingBottom = "5px";
-    } else {
-      process.current.style.borderBottom = "2px solid transparent";
-      proItems.current.style.height = "0px";
-      proItems.current.style.paddingBottom = "0px";
-    }
-  };
-
-  let slideMenu = useRef();
-  let [menuToggle, setMenuToggle] = useState(false);
-
-  let menuClick = () => {
-    let dupli3Toggle = !menuToggle;
-    setMenuToggle(dupli3Toggle);
-    if (dupli3Toggle) {
-      slideMenu.current.style.height = "fit-content";
-    } else {
-      slideMenu.current.style.height = "0px";
-    }
-  };
-
   const [isServiceOpen, setIsServiceOpen] = useState(false);
   const [isProcessOpen, setIsProcessOpen] = useState(false);
 
@@ -281,4 +213,5 @@ const Header = () => {
                 <i className="ri-article-line mr-2"></i>Blogs
                 <i className={`ri-arrow-down-s-fill ml-1 transition-transform duration-300 ${DeskBlogToggle ? 'rotate-180' : ''}`}></i>
                 <div ref={deskBlog} className="overflow-hidden h-[0px]
+```
 # Auto improvement by Melius

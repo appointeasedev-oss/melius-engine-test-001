@@ -1,3 +1,4 @@
+```javascript
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -89,4 +90,5 @@ const Hero = () => {
 };
 
 export default Hero;
+```
 # Auto improvement by Melius

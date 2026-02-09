@@ -1,13 +1,11 @@
 ```javascript
 import React from 'react'
 
-const ServiceHead = (props) => {
-  const { head, icon } = props;
-
+const ServiceHead = ({ head, icon }) => {
   return (
     <div className='serHead flex gap-4 cursor-pointer w-fit'>
       <i className={icon}></i>
-      <h4 className='text-md '>{head}</h4>
+      <h4 className='text-md'>{head}</h4>
     </div>
   )
 }
