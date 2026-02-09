@@ -2,7 +2,7 @@ import os, random, requests
 
 KEYS = [k for k in os.environ["OPENROUTER_KEYS"].splitlines() if k.strip()]
 
-def chat(messages, model="openai/gpt-4.1-mini"):
+def chat(messages, model="arcee-ai/trinity-large-preview:free"):
     key = random.choice(KEYS)
     r = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
