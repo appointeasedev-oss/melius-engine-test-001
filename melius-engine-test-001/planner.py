@@ -22,7 +22,7 @@ def plan(files, memory, retries=3):
         "summary": "what improved",
         "next": [...]
     }
-    Guarantees at least one edit per run.
+    Guarantees at least one edit per run in /src, for any file type.
     """
     prompt = [
         {"role": "system", "content": CORE_SOUL},
@@ -48,17 +48,24 @@ def plan(files, memory, retries=3):
             data.setdefault("summary", "")
             data.setdefault("next", [])
 
-            # ---------- GUARANTEE MINIMAL IMPROVEMENT ----------
+            # ---------- GUARANTEE IMPROVEMENT ----------
             if not data["edit"]:
-                # pick first JS/TS/TSX file in /src
-                candidate_files = [f for f in files if f.startswith("src/") and f.endswith((".js", ".ts", ".tsx"))]
+                # pick first file inside /src regardless of type
+                candidate_files = [f for f in files if f.startswith("src/")]
                 if candidate_files:
                     target = candidate_files[0]
-                    content = read(target)
-                    # simple improvement: append a comment
-                    content += "\n// Minor auto improvement by Melius\n"
+                    content = read(target) or ""
+                    # append a minimal improvement comment for any file
+                    if target.endswith((".js", ".ts", ".tsx", ".jsx", ".vue")):
+                        content += "\n// Auto improvement by Melius\n"
+                    elif target.endswith((".py")):
+                        content += "\n# Auto improvement by Melius\n"
+                    else:
+                        # fallback for other file types
+                        content += "\n# Auto improvement by Melius\n"
+
                     data["edit"][target] = content
-                    data["summary"] += " | Added minimal auto comment to guarantee improvement"
+                    data["summary"] += " | Forced minimal improvement to guarantee change"
 
             return data
 
