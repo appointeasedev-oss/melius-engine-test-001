@@ -5,7 +5,8 @@ from utils.repo import read
 
 def plan(files, memory, retries=3):
     """
-    Returns:
+    Generates a safe improvement plan for code/text files.
+    Returns a dict:
     {
         "read": [...],
         "edit": { "path/to/file": "improved code only" },
@@ -13,17 +14,21 @@ def plan(files, memory, retries=3):
         "next": [...]
     }
     """
+
+    # Only text/code file types
     TEXT_EXTENSIONS = (
         ".js", ".ts", ".tsx", ".jsx", ".vue",
         ".py", ".json", ".html", ".css", ".scss",
         ".md", ".txt"
     )
 
+    # Candidate files inside src/
     candidate_files = [
         f for f in files
         if f.startswith("src/") and f.lower().endswith(TEXT_EXTENSIONS)
     ]
 
+    # Base prompt for AI
     prompt_base = [
         {"role": "system", "content": CORE_SOUL},
         {"role": "user", "content": json.dumps({
@@ -44,13 +49,16 @@ def plan(files, memory, retries=3):
             # ---------- READ AND IMPROVE FILES ----------
             for fpath in candidate_files:
                 content = read(fpath) or ""
+
                 prompt = prompt_base + [
                     {"role": "user", "content": f"Improve this code file:\n{content}"}
                 ]
+
                 improved = chat(prompt)
-                if improved.strip():
-                    # Only take the code string
-                    data["edit"][fpath] = improved
+
+                if improved and improved.strip():
+                    # Only store raw code string
+                    data["edit"][fpath] = improved.strip()
                     data["summary"] += f" | Improved {fpath}"
                 else:
                     # fallback minimal improvement
@@ -65,8 +73,9 @@ def plan(files, memory, retries=3):
             return data
 
         except Exception as e:
-            # Retry with previous responses
-            prompt_base.append({"role": "assistant", "content": improved if 'improved' in locals() else ""})
+            # Retry safely with previous assistant response
+            prev_response = improved if 'improved' in locals() else ""
+            prompt_base.append({"role": "assistant", "content": prev_response})
             prompt_base.append({"role": "user", "content": f"ERROR: {e}. Return ONLY improved CODE."})
 
     # fallback if all retries fail
