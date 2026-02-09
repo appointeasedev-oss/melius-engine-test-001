@@ -16,12 +16,10 @@ DOC_LOG = Path("docs/logs.json")
 
 
 def ensure_bootstrap():
-    # Create required directories
     MEMORY_DIR.mkdir(parents=True, exist_ok=True)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     DOC_LOG.parent.mkdir(parents=True, exist_ok=True)
 
-    # Create files if missing
     if not MEM.exists():
         MEM.write_text(json.dumps({
             "project_model": "",
@@ -46,29 +44,27 @@ def save(path, data):
 
 def main():
     ensure_bootstrap()
-
     memory = load(MEM)
     files = list_files()
 
-    # --------------- PLAN -----------------
+    # ---------- PLAN ----------
     improvement_plan = plan(files, memory)
 
-    # --------------- EXECUTE -----------------
+    # ---------- EXECUTE ----------
     execute(improvement_plan)
 
-    # --------------- LOGGING -----------------
+    # ---------- LOGGING ----------
     entry = {
         "time": datetime.datetime.utcnow().isoformat() + "Z",
         "summary": improvement_plan.get("summary", ""),
         "files": list(improvement_plan.get("edit", {}).keys())
     }
-
     history = load(LOG)
     history.append(entry)
     save(LOG, history)
     save(DOC_LOG, history)
 
-    # --------------- MEMORY -----------------
+    # ---------- MEMORY ----------
     memory["improvement_history"].append(entry["summary"])
     memory["future_targets"] = improvement_plan.get("next", [])
     save(MEM, memory)
