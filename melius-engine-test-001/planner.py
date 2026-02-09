@@ -1,18 +1,7 @@
 import json
-import re
 from core_soul import CORE_SOUL
 from utils.llm import chat
 from utils.repo import read
-
-JSON_RE = re.compile(r"\{.*\}", re.S)
-
-def extract_json(text: str) -> dict:
-    """Extract JSON from LLM response"""
-    match = JSON_RE.search(text)
-    if not match:
-        raise ValueError("No JSON found in LLM response")
-    return json.loads(match.group())
-
 
 def plan(files, memory, retries=3):
     """
@@ -23,7 +12,20 @@ def plan(files, memory, retries=3):
         "summary": "what improved",
         "next": [...]
     }
+
+    Only text/code files in /src are read. Images/binaries are skipped.
     """
+    TEXT_EXTENSIONS = (
+        ".js", ".ts", ".tsx", ".jsx", ".vue",
+        ".py", ".json", ".html", ".css", ".scss",
+        ".md", ".txt"
+    )
+
+    candidate_files = [
+        f for f in files
+        if f.startswith("src/") and f.lower().endswith(TEXT_EXTENSIONS)
+    ]
+
     prompt_base = [
         {"role": "system", "content": CORE_SOUL},
         {"role": "user", "content": json.dumps({
@@ -42,7 +44,6 @@ def plan(files, memory, retries=3):
             }
 
             # ---------- READ AND IMPROVE FILES ----------
-            candidate_files = [f for f in files if f.startswith("src/")]
             for fpath in candidate_files:
                 content = read(fpath) or ""
                 prompt = prompt_base + [
@@ -54,8 +55,14 @@ def plan(files, memory, retries=3):
                     data["summary"] += f" | Improved {fpath}"
                 else:
                     # fallback minimal improvement
-                    suffix = "// Auto improvement by Melius\n" if fpath.endswith((".js", ".ts", ".tsx", ".jsx", ".vue")) else "# Auto improvement by Melius\n"
-                    data["edit"][fpath] = content + suffix
+                    if fpath.endswith((".js", ".ts", ".tsx", ".jsx", ".vue")):
+                        content += "\n// Auto improvement by Melius\n"
+                    elif fpath.endswith(".py"):
+                        content += "\n# Auto improvement by Melius\n"
+                    else:
+                        content += "\n# Auto improvement by Melius\n"
+
+                    data["edit"][fpath] = content
                     data["summary"] += f" | Forced minimal improvement {fpath}"
 
             return data
