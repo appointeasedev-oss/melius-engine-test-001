@@ -1,5 +1,5 @@
 ```javascript
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
 
 const BlogContext = createContext();
 
@@ -56,8 +56,10 @@ export const BlogProvider = ({ children }) => {
     setBlogData(prev => prev.filter(blog => blog.id !== id));
   };
 
+  const blogContextValue = useMemo(() => ({ blogData, updateBlog, addBlog, deleteBlog }), [blogData]);
+
   return (
-    <BlogContext.Provider value={{ blogData, updateBlog, addBlog, deleteBlog }}>
+    <BlogContext.Provider value={blogContextValue}>
       {children}
     </BlogContext.Provider>
   );
