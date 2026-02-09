@@ -1,32 +1,43 @@
-import os
-import json
-from datetime import datetime
-from pathlib import Path
+import json, datetime
+from utils.repo import list_files
+from utils.safety import snapshot, restore, build_ok
+from planner import plan
+from executor import execute
 
-BASE = Path("melius-engine-test-001")
-LOGS = BASE / "logs"
-LOGS.mkdir(parents=True, exist_ok=True)
+MEM = "melius-engine-test-001/memory/long_term.json"
+LOG = "melius-engine-test-001/logs/history.json"
+DOC_LOG = "docs/logs.json"
 
-LOG_FILE = LOGS / "run.log"
-
-def log(msg):
-    line = f"[{datetime.utcnow().isoformat()}] {msg}\n"
-    LOG_FILE.write_text(
-        LOG_FILE.read_text() + line if LOG_FILE.exists() else line
-    )
+def load(p): return json.load(open(p))
+def save(p, d): json.dump(d, open(p, "w"), indent=2)
 
 def main():
-    keys = os.environ.get("OPENROUTER_KEYS", "").strip().splitlines()
+    memory = load(MEM)
+    files = list_files()
 
-    log("Agent started")
-    log(f"Detected {len(keys)} OpenRouter keys")
+    improvement_plan = plan(files, memory)
 
-    # Simple guaranteed repo change (heartbeat)
-    heartbeat = BASE / "heartbeat.txt"
-    heartbeat.write_text(f"Last run: {datetime.utcnow().isoformat()}")
+    snap = snapshot()
+    execute(improvement_plan)
 
-    log("Heartbeat updated")
-    log("Agent finished successfully")
+    if not build_ok():
+        restore(snap)
+        return
+
+    entry = {
+        "time": datetime.datetime.utcnow().isoformat(),
+        "summary": improvement_plan["summary"],
+        "files": list(improvement_plan["edit"].keys())
+    }
+
+    history = load(LOG)
+    history.append(entry)
+    save(LOG, history)
+    save(DOC_LOG, history)
+
+    memory["improvement_history"].append(entry["summary"])
+    memory["future_targets"] = improvement_plan.get("next", [])
+    save(MEM, memory)
 
 if __name__ == "__main__":
     main()
