@@ -17,7 +17,7 @@ const LatestItems: React.FC<LatestItemsProps> = ({ data }) => {
       <div className="items-container">
         {data.map((item, index) => (
           <article key={index} className="item">
-            <img src={item.image} alt={item.alt || 'Latest update'} />
+            <img src={item.image} alt={item.alt || 'Latest update'} loading="lazy" />
             <div className="item-content">
               <h3>{item.title}</h3>
               <p>{item.date}</p>

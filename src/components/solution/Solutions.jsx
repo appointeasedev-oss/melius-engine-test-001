@@ -10,17 +10,17 @@ const solutionsData = [
   },
   {
     icon: 'dev2',
-    head: 'web development',
+    head: 'Web development',
     para: 'With the aid of a responsive and dynamic company or eCommerce website, you may strengthen your online presence.'
   },
   {
     icon: 'dev3',
-    head: 'blockchain development',
-    para: 'Cryptocurrency creation, wallet development, smart contract development, and multichain/ hyper ledger solutions are all possible with blockchain.'
+    head: 'Blockchain development',
+    para: 'Cryptocurrency creation, wallet development, smart contract development, and multichain/hyperledger solutions are all possible with blockchain.'
   },
   {
     icon: 'dev4',
-    head: 'progressive web application',
+    head: 'Progressive web application',
     para: 'Tech startups, multinational corporations, and large-scale organisations can benefit from our progressive web app development services.'
   },
   {
@@ -30,7 +30,7 @@ const solutionsData = [
   },
   {
     icon: 'dev6',
-    head: 'digital marketing',
+    head: 'Digital marketing',
     para: 'Our specialists will create digital marketing plans that will help you promote your business online.'
   }
 ]
@@ -39,7 +39,7 @@ const Solutions = () => {
   return (
     <div className='mt-10 px-2 max-w-[1600px] mx-auto'>
       <div className='flex flex-col gap-2 items-center'>
-        <h6 className='text-sm uppercase '>your choice of weapon</h6>
+        <h6 className='text-sm uppercase '>Your choice of weapon</h6>
         <h2 className='text-center  text-[1.5rem] w-[98%] font-semibold leading-8'>USE OUR END-TO-END DIGITAL SOLUTIONS TO GROW YOUR BUSINESS.</h2>
       </div>
       <div className='mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-10 md:px-2 lg:px-4 xl:px-8'>

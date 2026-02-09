@@ -1,3 +1,4 @@
+```javascript
 import React, { useState } from "react";
 import dotBack from '../../assets/formBack.png';
 
@@ -130,3 +131,4 @@ const FormPage = () => {
 };
 
 export default FormPage;
+```

@@ -1,8 +1,81 @@
-{
-  "files": [
-    {
-      "path": "src/index.css",
-      "content": "@import \"tailwindcss\";\n\n:root {\n  --arrow-animation-duration: 1.5s;\n  --arrow-animation-timing: ease-in-out;\n  --arrow-animation-iterations: infinite;\n  --arrow-transform-start: translateY(-10px);\n  --arrow-transform-end: translateY(0px);\n  --mobile-menu-font-size: 0.9rem;\n  --mobile-button-padding: 0.5rem 1rem;\n  --desktop-min-width: 1200px;\n  --desktop-hello-right: -10%;\n}\n\n* {\n  box-sizing: border-box;\n}\n\nbody {\n  height: 100%;\n  max-width: 1500px;\n  overflow-x: hidden;\n}\n\n.arrow {\n  animation-name: ani;\n  animation-duration: var(--arrow-animation-duration);\n  animation-timing-function: var(--arrow-animation-timing);\n  animation-iteration-count: var(--arrow-animation-iterations);\n}\n\n@keyframes ani {\n  0% {\n    transform: var(--arrow-transform-start);\n  }\n  40%, 80% {\n    transform: var(--arrow-transform-end);\n  }\n  100% {\n    transform: var(--arrow-transform-start);\n  }\n}\n\n.service-menu::-webkit-scrollbar {\n  display: none;\n}\n\n.devParent:hover .devIcon {\n  transition: all 0.5s ease;\n  transform: rotate(360deg);\n}\n\n/* media queries for hero hello div */\n@media (max-width: 425px) {\n  .lastDiv {\n    flex-direction: column;\n  }\n  .latestImg {\n    height: 12.5vw;\n  }\n  .latestHead {\n    font-size: 1.2rem;\n  }\n}\n\n@media (min-width: var(--desktop-min-width)) {\n  .helloDiv {\n    right: var(--desktop-hello-right);\n  }\n}\n\n@media (max-width: 768px) {\n  .mobileMenu {\n    font-size: var(--mobile-menu-font-size);\n  }\n  .mobileButton {\n    padding: var(--mobile-button-padding);\n  }\n}"
-    }
-  ]
+```css
+@import "tailwindcss";
+
+:root {
+  --arrow-animation-duration: 1.5s;
+  --arrow-animation-timing: ease-in-out;
+  --arrow-animation-iterations: infinite;
+  --arrow-transform-start: translateY(-10px);
+  --arrow-transform-end: translateY(0px);
+  --mobile-menu-font-size: 0.9rem;
+  --mobile-button-padding: 0.5rem 1rem;
+  --desktop-min-width: 1200px;
+  --desktop-hello-right: -10%;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  max-width: 1500px;
+  overflow-x: hidden;
+}
+
+.arrow {
+  animation-name: ani;
+  animation-duration: var(--arrow-animation-duration);
+  animation-timing-function: var(--arrow-animation-timing);
+  animation-iteration-count: var(--arrow-animation-iterations);
+}
+
+@keyframes ani {
+  0% {
+    transform: var(--arrow-transform-start);
+  }
+  40%, 80% {
+    transform: var(--arrow-transform-end);
+  }
+  100% {
+    transform: var(--arrow-transform-start);
+  }
+}
+
+.service-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.devParent:hover .devIcon {
+  transition: all 0.5s ease;
+  transform: rotate(360deg);
+}
+
+/* media queries for hero hello div */
+@media (max-width: 425px) {
+  .lastDiv {
+    flex-direction: column;
+  }
+  .latestImg {
+    height: 12.5vw;
+  }
+  .latestHead {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: var(--desktop-min-width)) {
+  .helloDiv {
+    right: var(--desktop-hello-right);
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileMenu {
+    font-size: var(--mobile-menu-font-size);
+  }
+  .mobileButton {
+    padding: var(--mobile-button-padding);
+  }
+}
+```

@@ -1,3 +1,4 @@
+```javascript
 import React from 'react';
 import './DevItems.css';
 
@@ -6,9 +7,10 @@ interface DevItemProps {
   description: string;
   link: string;
   image: string;
+  imageAlt?: string;
 }
 
-const DevItems: React.FC<DevItemProps> = ({ title, description, link, image }) => {
+const DevItems: React.FC<DevItemProps> = ({ title, description, link, image, imageAlt = title }) => {
   return (
     <div className="dev-item">
       <div className="dev-item-content">
@@ -19,10 +21,11 @@ const DevItems: React.FC<DevItemProps> = ({ title, description, link, image }) =
         </a>
       </div>
       <div className="dev-item-image">
-        <img src={image} alt={title} />
+        <img src={image} alt={imageAlt} />
       </div>
     </div>
   );
 };
 
 export default DevItems;
+```

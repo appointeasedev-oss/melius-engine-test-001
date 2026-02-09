@@ -5,7 +5,10 @@ const ScrollToTop = () => {
   useEffect(() => {
     // SSR safety check to prevent window access on server
     if (typeof window !== 'undefined') {
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Added smooth scrolling behavior
+      });
     }
   }, []);
 

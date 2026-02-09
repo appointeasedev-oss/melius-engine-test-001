@@ -1,42 +1,18 @@
-import React from 'react'
-import Home from './Home'
-import About from './pages/about/About'
-import ScrollToTop from "./ScrollToTop"; 
-import { createBrowserRouter ,RouterProvider} from 'react-router-dom'
-import { BlogProvider } from './context/Context'
-import Blogs from './pages/Blog/Blogs'
-const App = () => {
-  const router = createBrowserRouter([
-    {
-    path: '/',
-    element: <>
-      <ScrollToTop />{/* Ye component page change hone pe top pe le aayega */}
-      <Home/>
-      </>,
-    },
-    {
-    path: '/about',
-    element: <>
-    <ScrollToTop />
-    <About/>
-    </>,
-    },
-    {
-      path: '/blogs/:name',
-      element: <div className='w-screen '>
-          <ScrollToTop />
-          <Blogs/>
-      </div>
-    }
-])
-  return (
-    <div>
-      <BlogProvider>           
-        <RouterProvider router={router} />
-      </BlogProvider>
-    </div>
-  )
+```json
+{
+  "plan": {
+    "action": "improve",
+    "target": "src/App.jsx",
+    "improvement": "Add error boundaries and loading states to improve user experience",
+    "files_to_read": [
+      "src/App.jsx",
+      "src/ScrollToTop.jsx"
+    ],
+    "reasoning": "Error boundaries will catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. This improves user experience and helps with debugging."
+  },
+  "files_to_read": [
+    "src/App.jsx",
+    "src/ScrollToTop.jsx"
+  ]
 }
-
-export default App
-
+```

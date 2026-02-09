@@ -13,7 +13,7 @@ const ServiceHead: React.FC = () => {
       className="service-head"
     >
       <h1>Services</h1>
-      <p>We provide high-quality services</p>
+      <p>We provide high-quality services tailored to your needs</p>
     </motion.div>
   );
 };
