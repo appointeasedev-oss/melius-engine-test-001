@@ -51,15 +51,20 @@ def main():
     memory = load(MEM)
     files = list_files()
 
+    # --------------- PLAN -----------------
     improvement_plan = plan(files, memory)
 
+    # --------------- EXECUTE -----------------
     snap = snapshot()
     execute(improvement_plan)
 
+    # --------------- BUILD CHECK -----------------
     if not build_ok():
         restore(snap)
+        print("[MELIUS] Build failed. Restored snapshot.")
         return
 
+    # --------------- LOGGING -----------------
     entry = {
         "time": datetime.datetime.utcnow().isoformat() + "Z",
         "summary": improvement_plan.get("summary", ""),
@@ -68,14 +73,15 @@ def main():
 
     history = load(LOG)
     history.append(entry)
-
     save(LOG, history)
     save(DOC_LOG, history)
 
+    # --------------- MEMORY -----------------
     memory["improvement_history"].append(entry["summary"])
     memory["future_targets"] = improvement_plan.get("next", [])
-
     save(MEM, memory)
+
+    print(f"[MELIUS] Applied improvements to {len(entry['files'])} file(s): {entry['files']}")
 
 
 if __name__ == "__main__":
