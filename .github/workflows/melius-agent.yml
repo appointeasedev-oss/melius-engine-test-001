@@ -1,0 +1,48 @@
+name: Melius Autonomous Evolution Agent
+
+on:
+  schedule:
+    - cron: "*/7 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install requests
+          npm install
+
+      - name: Run Melius Agent
+        env:
+          OPENROUTER_KEYS: |
+            ${{ secrets.OPENROUTER_KEY_1 }}
+            ${{ secrets.OPENROUTER_KEY_2 }}
+            ${{ secrets.OPENROUTER_KEY_3 }}
+            ${{ secrets.OPENROUTER_KEY_4 }}
+            ${{ secrets.OPENROUTER_KEY_5 }}
+        run: python melius-engine-test-001/agent.py
+
+      - name: Commit & Push
+        run: |
+          git config user.name "melius-agent"
+          git config user.email "agent@melius.ai"
+          git add .
+          git commit -m "🤖 Melius autonomous improvement" || echo "No changes"
+          git push
