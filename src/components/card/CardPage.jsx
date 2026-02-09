@@ -16,11 +16,11 @@ const CardPage = () => {
       </div>
       <div className='grid gap-3 justify-center md:grid-cols-2 lg:grid-cols-3 lg:px-10 mt-12'>
         <Card icon={card1} head='Health Care' para='Schedule daily workout, check fitness, and provide immediate patient care solutions with digital healthcare services' />
-        <Card icon={card2} head='real estate' para='With one digital platform, you can easily list properties compare them, and quick and safe home purchasing options.'/>
-        <Card icon={card3} head='retail & E-Commerce' para='Increase conversion rates and develop brands that people love by unlocking the full potential of merchants and ecommerce shops.'/>
-        <Card icon={card4} head='automotive' para='Improve visibility and business success by improving customer happiness with linked autonomous cars and smart mobility services that reinvent mobility.'/>
-        <Card icon={card5} head='education' para='With an elearning management system, you may get online sessions to in-classroom instruction and digital solutions that make the learning experience difficult.'/>
-        <Card icon={card6} head='entertainment' para='with digital entertainment solutions, provide live streaming, online chatting, social networking, and more all in one platform.'/>
+        <Card icon={card2} head='Real Estate' para='With one digital platform, you can easily list properties compare them, and quick and safe home purchasing options.'/>
+        <Card icon={card3} head='Retail & E-Commerce' para='Increase conversion rates and develop brands that people love by unlocking the full potential of merchants and ecommerce shops.'/>
+        <Card icon={card4} head='Automotive' para='Improve visibility and business success by improving customer happiness with linked autonomous cars and smart mobility services that reinvent mobility.'/>
+        <Card icon={card5} head='Education' para='With an elearning management system, you may get online sessions to in-classroom instruction and digital solutions that make the learning experience difficult.'/>
+        <Card icon={card6} head='Entertainment' para='with digital entertainment solutions, provide live streaming, online chatting, social networking, and more all in one platform.'/>
       </div>
     </div>
   )

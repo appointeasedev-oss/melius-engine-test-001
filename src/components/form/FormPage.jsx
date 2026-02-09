@@ -1,3 +1,4 @@
+```javascript
 import React from "react";
 import dotBack from '../../assets/formBack.png'
 const FormPage = () => {
@@ -52,4 +53,5 @@ const FormPage = () => {
 };
 
 export default FormPage;
+```
 # Auto improvement by Melius
