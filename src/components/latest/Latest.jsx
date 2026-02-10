@@ -1,3 +1,4 @@
+```javascript
 import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -31,4 +32,5 @@ const Footer = ({ children }) => {
 };
 
 export default Footer;
+```
 # Auto improvement by Melius

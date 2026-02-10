@@ -8,6 +8,7 @@ const Page1Content = () => {
       <p>This is the content for Page 1.</p>
       <p>Added additional content for demonstration purposes.</p>
       <p>Enhanced content with more detailed information.</p>
+      <p>Added more content to showcase the improvement process.</p>
     </div>
   );
 };
