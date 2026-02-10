@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    let hello = useRef();
     let slide = useRef();
     let text = useRef();
+    let hello = useRef();
 
     useEffect(() => {
         let tl = gsap.timeline({

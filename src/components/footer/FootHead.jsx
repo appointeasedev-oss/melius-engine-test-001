@@ -6,6 +6,7 @@ const Page1Content = () => {
     <div className="page1-content">
       <h1>Page 1 Content</h1>
       <p>This is the content for Page 1.</p>
+      <p>Added additional content for demonstration purposes.</p>
     </div>
   );
 };

@@ -17,16 +17,5 @@ const Latest = () => {
         <div className='w-full flex flex-col items-center lg:w-[50%]'>
           <img className='sm:w-[35rem] md:w-[40rem] lg:w-[39rem]' src={latest} alt='Latest Main Image' />
         </div>
-        <div className='mt-25 lg:mt-0 flex flex-col gap-10 items-center lg:w-[50%] lg:gap-15'>
-          <LatestItems img={latest1} head='Online Marketplace App Development Guide Before You Startup' />
-          <LatestItems img={latest2} head='MEAN Stack VS MERN Stack: Which Full Stack Web App Development Framework Should You Go For Your Business?' />
-          <LatestItems img={latest3} head='Top Mobile Application Development Trends To Look Out For in 2021' />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default Latest
-```
+        <div className='mt-
 # Auto improvement by Melius
