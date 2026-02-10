@@ -17,12 +17,17 @@ import ErrorBoundary from './components/ErrorBoundary';
 // Improved performance by using React.memo for App component
 const AppMemo = React.memo(App);
 
+// Added lazy loading for better performance
+const LazyApp = React.lazy(() => import('./App'));
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <Provider store={store}>
-          <AppMemo />
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <LazyApp />
+          </React.Suspense>
         </Provider>
       </BrowserRouter>
     </ErrorBoundary>
