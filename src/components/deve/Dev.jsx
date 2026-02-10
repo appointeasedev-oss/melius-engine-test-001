@@ -11,13 +11,18 @@ import store from './store';
 import App from './App';
 import './index.css';
 
+// Added error boundary for better error handling
+import ErrorBoundary from './components/ErrorBoundary';
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );
