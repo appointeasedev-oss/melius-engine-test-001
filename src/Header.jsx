@@ -1,10 +1,11 @@
+```javascript
 import React, { useState } from 'react';
 
 const ImprovedComponent = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => {
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
   };
 
   return (
@@ -16,4 +17,5 @@ const ImprovedComponent = () => {
 };
 
 export default ImprovedComponent;
+```
 # Auto improvement by Melius

@@ -1,3 +1,4 @@
+```javascript
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -74,12 +75,12 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <div className="header__inner">
-          <Link to="/" className="header__logo">
-            <img src={Logo} alt="Logo" />
+          <Link to="/" className="header__logo" aria-label="Home">
+            <img src={Logo} alt="Company Logo" />
           </Link>
 
           {!isMobile ? (
-            <nav className="header__nav">
+            <nav className="header__nav" aria-label="Main navigation">
               <ul>{renderMenuItems(menuItems)}</ul>
               {user ? (
                 <ul>{renderMenuItems(authMenuItems)}</ul>
@@ -114,17 +115,5 @@ const Header = () => {
 };
 
 export default Header;
-
-/* Improved:
-- Added proper ARIA labels for accessibility
-- Enhanced keyboard navigation support
-- Improved mobile menu state management
-- Added error handling for logout
-- Optimized menu rendering with reusable function
-- Better responsive design implementation
-- Added proper alt text for logo
-- Improved TypeScript compatibility
-- Enhanced security with proper logout handling
-- Better code organization and readability
-*/
+```
 # Auto improvement by Melius
