@@ -55,4 +55,73 @@ const Header = () => {
         { name: "App Store Optimization", icon: "ri-store-2-line" },
         { name: "Social Media Optimization", icon: "ri-share-line" },
         { name: "Search Engine Optimization", icon: "ri-search-2-line" }
+      ]
+    }
+  ];
+
+  // Improved code with better organization and comments
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <header className="header">
+      <nav className="navbar">
+        <div className="nav-container">
+          <div className="nav-logo">
+            <img src={logo} alt="Logo" />
+          </div>
+          <div className="nav-menu">
+            <ul className="nav-list">
+              <li className="nav-item">
+                <NavLink to="/" className="nav-link">Home</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/about" className="nav-link">About</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/services" className="nav-link">Services</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/blog" className="nav-link">Blog</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/contact" className="nav-link">Contact</NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className="nav-toggle" onClick={toggleMenu}>
+            <img src={menu} alt="Menu" />
+          </div>
+        </div>
+      </nav>
+      {isMenuOpen && (
+        <div className="mobile-menu">
+          <ul className="mobile-menu-list">
+            <li className="mobile-menu-item">
+              <NavLink to="/" className="mobile-menu-link">Home</NavLink>
+            </li>
+            <li className="mobile-menu-item">
+              <NavLink to="/about" className="mobile-menu-link">About</NavLink>
+            </li>
+            <li className="mobile-menu-item">
+              <NavLink to="/services" className="mobile-menu-link">Services</NavLink>
+            </li>
+            <li className="mobile-menu-item">
+              <NavLink to="/blog" className="mobile-menu-link">Blog</NavLink>
+            </li>
+            <li className="mobile-menu-item">
+              <NavLink to="/contact" className="mobile-menu-link">Contact</NavLink>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;
+```
 # Auto improvement by Melius
