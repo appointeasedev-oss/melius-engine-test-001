@@ -1,12 +1,12 @@
 ```javascript
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import Page1Content from './Page1Content'
 import Page1Slider from './Page1Slider'
 import slide1 from '../assets/slide1.svg'
 import slide2 from '../assets/slide2.svg'
 import slide3 from '../assets/slide3.svg'
 
-const Page1 = () => {
+const Page1 = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = 3;
 
@@ -48,7 +48,7 @@ const Page1 = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Page1
 ```

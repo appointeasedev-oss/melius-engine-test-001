@@ -20,12 +20,13 @@ const AppMemo = React.memo(App);
 // Added lazy loading for better performance
 const LazyApp = React.lazy(() => import('./App'));
 
+// Improved accessibility by adding ARIA attributes
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <Provider store={store}>
-          <React.Suspense fallback={<div>Loading...</div>}>
+          <React.Suspense fallback={<div role="status" aria-live="polite">Loading...</div>}>
             <LazyApp />
           </React.Suspense>
         </Provider>
