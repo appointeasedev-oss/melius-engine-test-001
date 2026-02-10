@@ -8,6 +8,13 @@ const FootItems = ({ item, onClick, className }) => {
     <li
       className={itemClassName}
       onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick()
+        }
+      }}
     >
       {item}
     </li>

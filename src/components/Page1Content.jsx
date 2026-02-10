@@ -12,18 +12,5 @@ const Page1Content = ({ head, para }) => {
           <p className="slide-para text-[1rem] text-center sm:text-[1rem]">
             {para}
           </p>
-          <button className='group cursor-pointer relative z-[0]  mt-4 w-fit px-4 py-3 uppercase text-white text-md overflow-hidden before:content-[""] before:absolute before:h-full before:w-[55%] before:top-0 before:left-0 before:bg-[#01345B] before:z-[-1] before:transition-all before:duration-300 hover:before:w-[100%]'>
-            <span className="relative z-[2]">check</span>
-            <span className="relative z-10 ml-1 group-hover:text-white text-black transition-colors duration-300">
-              now
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Page1Content;
-```
+          <button className='group cursor-pointer relative z-[0]  mt-
 # Auto improvement by Melius
