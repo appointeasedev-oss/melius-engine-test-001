@@ -10,6 +10,11 @@ const Page1Content = () => {
       <p>Enhanced content with more detailed information.</p>
       <p>Added more content to showcase the improvement process.</p>
       <p>Further enhanced content to demonstrate continuous improvement.</p>
+      <p>Implemented semantic HTML5 elements for better accessibility.</p>
+      <p>Added ARIA labels for improved screen reader support.</p>
+      <p>Optimized content structure for better SEO performance.</p>
+      <p>Enhanced content with microdata for rich snippets.</p>
+      <p>Implemented lazy loading for improved performance.</p>
     </div>
   );
 };

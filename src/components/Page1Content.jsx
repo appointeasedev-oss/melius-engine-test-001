@@ -12,5 +12,15 @@ const Page1Content = ({ head, para }) => {
           <p className="slide-para text-[1rem] text-center sm:text-[1rem]">
             {para}
           </p>
-          <button className='group cursor-pointer relative z-[0]  mt-
+          <button className='group cursor-pointer relative z-[0]  mt-4'>
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Page1Content;
+```
 # Auto improvement by Melius
