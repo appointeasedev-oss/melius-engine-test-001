@@ -1,10 +1,12 @@
 ```javascript
 import React from 'react'
 
-const FootItems = ({ item, onClick }) => {
+const FootItems = ({ item, onClick, className }) => {
+  const itemClassName = `capitalize text-sm cursor-pointer hover:text-blue-500 transition-colors duration-200 ${className || ''}`
+
   return (
     <li
-      className='capitalize text-sm cursor-pointer hover:text-blue-500 transition-colors duration-200'
+      className={itemClassName}
       onClick={onClick}
     >
       {item}
