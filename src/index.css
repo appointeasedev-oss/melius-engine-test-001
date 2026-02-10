@@ -8,7 +8,7 @@ const Home = () => {
     <div className="home-container">
       <h1>Welcome to Our Website</h1>
       <p>This is the home page of our website.</p>
-      <Link to="/about">Learn More</Link>
+      <Link to="/about" className="learn-more-link">Learn More</Link>
     </div>
   );
 };
