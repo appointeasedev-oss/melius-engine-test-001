@@ -66,6 +66,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Improved accessibility by adding aria-label to menu toggle
   return (
     <header className="header">
       <nav className="navbar">
@@ -92,7 +93,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="nav-toggle" onClick={toggleMenu}>
+          <div className="nav-toggle" onClick={toggleMenu} aria-label="Toggle menu">
             <img src={menu} alt="Menu" />
           </div>
         </div>
