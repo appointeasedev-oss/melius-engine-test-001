@@ -14,12 +14,15 @@ import './index.css';
 // Added error boundary for better error handling
 import ErrorBoundary from './components/ErrorBoundary';
 
+// Improved performance by using React.memo for App component
+const AppMemo = React.memo(App);
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <Provider store={store}>
-          <App />
+          <AppMemo />
         </Provider>
       </BrowserRouter>
     </ErrorBoundary>
