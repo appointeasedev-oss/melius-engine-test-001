@@ -21,6 +21,7 @@ const FootItems = ({ item, onClick, className }) => {
       role="button"
       tabIndex={0}
       onKeyDown={handleKeyDown}
+      aria-label={item}
     >
       {item}
     </li>
