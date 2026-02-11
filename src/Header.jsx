@@ -1,13 +1,9 @@
 ```javascript
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const ImprovedComponent = () => {
   const [count, setCount] = useState(0);
-  const [isEven, setIsEven] = useState(true);
-
-  useEffect(() => {
-    setIsEven(count % 2 === 0);
-  }, [count]);
+  const isEven = useMemo(() => count % 2 === 0, [count]);
 
   const increment = () => {
     setCount(prevCount => prevCount + 1);
