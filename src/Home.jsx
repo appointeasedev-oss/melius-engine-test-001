@@ -1,5 +1,5 @@
 ```javascript
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import { Search, ShoppingCart, Favorite, Menu, Close } from "react-feather";
@@ -11,6 +11,9 @@ function Header() {
   const { cartItems, wishItems } = React.useContext(CartContext);
 
   const getTotalItems = (items) => items.reduce((sum, item) => sum + item.qty, 0);
+
+  // Memoize the total items calculation to prevent unnecessary re-renders
+  const totalCartItems = useMemo(() => getTotalItems(cartItems), [cartItems]);
 
   return (
     <header className="header">
@@ -29,7 +32,7 @@ function Header() {
             </Link>
             <Link to="/cart">
               <ShoppingCart />
-              <span className="cart-count">{getTotalItems(cartItems)}</span>
+              <span className="cart-count">{totalCartItems}</span>
             </Link>
           </div>
         </div>

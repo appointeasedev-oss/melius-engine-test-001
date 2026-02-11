@@ -1,8 +1,13 @@
 ```javascript
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ImprovedComponent = () => {
   const [count, setCount] = useState(0);
+  const [isEven, setIsEven] = useState(true);
+
+  useEffect(() => {
+    setIsEven(count % 2 === 0);
+  }, [count]);
 
   const increment = () => {
     setCount(prevCount => prevCount + 1);
@@ -11,6 +16,7 @@ const ImprovedComponent = () => {
   return (
     <div>
       <p>Count: {count}</p>
+      <p>Is Even: {isEven ? 'Yes' : 'No'}</p>
       <button onClick={increment}>Increment</button>
     </div>
   );

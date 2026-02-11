@@ -1,5 +1,4 @@
 ```javascript
-// Improved src/components/card/Card.jsx
 import React from 'react';
 import './Card.css';
 

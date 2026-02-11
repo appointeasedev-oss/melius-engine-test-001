@@ -9,7 +9,7 @@ const FootItems = ({ items }) => {
   return (
     <div className={`footer-items ${theme}`}>
       {items.map((item, index) => (
-        <Link key={index} to={item.path} className="footer-item">
+        <Link key={item.id || index} to={item.path} className="footer-item">
           {item.label}
         </Link>
       ))}
