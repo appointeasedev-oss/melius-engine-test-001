@@ -14,6 +14,10 @@ const FootItems = ({ items }) => {
           to={item.path}
           className="footer-item"
           aria-label={item.label}
+          onClick={() => {
+            // Log click event for analytics
+            console.log(`Footer item clicked: ${item.label}`);
+          }}
         >
           {item.label}
         </Link>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 const ServiceItem = ({ title, description, icon }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} avatar={icon} />
     <CardContent>{description}</CardContent>
   </Card>
@@ -27,9 +27,9 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const ServiceHead = ({ title, subtitle }) => (
-  <div>
-    <Typography variant="h4">{title}</Typography>
-    <Typography variant="subtitle1">{subtitle}</Typography>
+  <div className="service-head">
+    <Typography variant="h4" gutterBottom>{title}</Typography>
+    <Typography variant="subtitle1" color="textSecondary">{subtitle}</Typography>
   </div>
 );
 
@@ -52,8 +52,8 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardMedia } from '@material-ui/core';
 
 const SoluCards = ({ title, description, image }) => (
-  <Card>
-    <CardMedia image={image} title={title} />
+  <Card elevation={3}>
+    <CardMedia image={image} title={title} style={{ height: 200 }} />
     <CardContent>
       <h3>{title}</h3>
       <p>{description}</p>
@@ -77,7 +77,7 @@ import PropTypes from 'prop-types';
 import SoluCards from './SoluCards';
 
 const Solutions = ({ solutions }) => (
-  <div>
+  <div className="solutions-grid">
     {solutions.map((solution) => (
       <SoluCards key={solution.id} {...solution} />
     ))}
@@ -105,7 +105,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 const CardPage = ({ title, content }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} />
     <CardContent>{content}</CardContent>
   </Card>
@@ -126,7 +126,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 const Card = ({ title, children }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} />
     <CardContent>{children}</CardContent>
   </Card>
@@ -147,14 +147,16 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader, TextField, Button } from '@material-ui/core';
 
 const FormPage = ({ title, onSubmit, fields }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} />
     <CardContent>
       <form onSubmit={onSubmit}>
         {fields.map((field) => (
-          <TextField key={field.name} {...field} />
+          <TextField key={field.name} {...field} margin="normal" fullWidth />
         ))}
-        <Button type="submit">Submit</Button>
+        <Button type="submit" variant="contained" color="primary" fullWidth>
+          Submit
+        </Button>
       </form>
     </CardContent>
   </Card>
@@ -182,8 +184,8 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const FootHead = ({ title }) => (
-  <div>
-    <Typography variant="h6">{title}</Typography>
+  <div className="footer-head">
+    <Typography variant="h6" gutterBottom>{title}</Typography>
   </div>
 );
 
@@ -202,7 +204,7 @@ import FootHead from './FootHead';
 import FootItems from './FootItems';
 
 const Footer = ({ title, items }) => (
-  <div>
+  <div className="footer">
     <FootHead title={title} />
     <FootItems items={items} />
   </div>
@@ -220,12 +222,14 @@ export default Footer;
 // src/components/footer/FootItems.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List, ListItem } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@material-ui/core';
 
 const FootItems = ({ items }) => (
-  <List>
+  <List dense>
     {items.map((item) => (
-      <ListItem key={item}>{item}</ListItem>
+      <ListItem key={item}>
+        <ListItemText primary={item} />
+      </ListItem>
     ))}
   </List>
 );
@@ -244,7 +248,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 const LatestItems = ({ title, description }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} />
     <CardContent>{description}</CardContent>
   </Card>
@@ -265,7 +269,7 @@ import PropTypes from 'prop-types';
 import LatestItems from './LatestItems';
 
 const Latest = ({ items }) => (
-  <div>
+  <div className="latest-grid">
     {items.map((item) => (
       <LatestItems key={item.title} {...item} />
     ))}
@@ -291,7 +295,7 @@ import PropTypes from 'prop-types';
 import DevItems from './DevItems';
 
 const Dev = ({ items }) => (
-  <div>
+  <div className="dev-grid">
     {items.map((item) => (
       <DevItems key={item.title} {...item} />
     ))}
@@ -317,7 +321,7 @@ import PropTypes from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 const DevItems = ({ title, description }) => (
-  <Card>
+  <Card elevation={2}>
     <CardHeader title={title} />
     <CardContent>{description}</CardContent>
   </Card>

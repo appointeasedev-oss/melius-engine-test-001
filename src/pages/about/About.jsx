@@ -3,6 +3,12 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Added middleware for logging requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
