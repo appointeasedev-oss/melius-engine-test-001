@@ -1,3 +1,4 @@
+```javascript
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
@@ -23,4 +24,5 @@ const CardComponent = ({ cardData }) => {
 };
 
 export default CardComponent;
+```
 # Auto improvement by Melius

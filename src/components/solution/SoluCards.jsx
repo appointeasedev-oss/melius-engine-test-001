@@ -12,6 +12,10 @@ function safeImprovement(code) {
     if (!code.includes("console.log")) {
       code += "\nconsole.log('Code improved successfully');";
     }
+    // Improved: Added additional safety check for null or undefined code
+    if (code === null || code === undefined) {
+      throw new Error("Code is null or undefined");
+    }
     return code;
   } catch (error) {
     console.error("Error during code improvement:", error);
